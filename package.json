@@ -1,0 +1,23 @@
+{
+  "name": "rpg-text-game",
+  "version": "1.0.0",
+  "description": "Command Line Text RPG",
+  "main": "bin/index.js",
+  "scripts": {
+    "start": "nodemon bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunomachador/rpg-text-game.git"
+  },
+  "author": "Bruno, Rui, Francisco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunomachador/rpg-text-game/issues"
+  },
+  "homepage": "https://github.com/brunomachador/rpg-text-game#readme",
+  "dependencies": {
+    "@inquirer/prompts": "^3.0.2",
+    "nodemon": "^3.0.1"
+  }
+}
