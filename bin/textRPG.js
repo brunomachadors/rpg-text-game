@@ -1,29 +1,40 @@
-const { rawlist, select } = require("@inquirer/prompts");
-const { door1, door2 } = require("../Doors/doors");
+const { rawlist, select } = require('@inquirer/prompts');
+const { treasureDoor, dangerDoor } = require('../Doors/doors');
+const GAME_TEXT = require('../gameText/gameTex');
 
 function renderGame() {
+  mainMenu();
+}
+
+function mainMenu() {
+  console.log(GAME_TEXT.mainMenu);
   rawlist({
-    message: "Welcome to textRPG!!!",
+    message: GAME_TEXT.doors,
     choices: [
-      { name: "Door 1", value: "door1" },
-      { name: "Door 2", value: "door2" },
+      { name: 'Left Door', value: 'treasureDoor' },
+      { name: 'Right Door', value: 'dangerDoor' },
     ],
   }).then(function (option) {
     switch (option) {
-      case "door1":
-        console.log("You entered in door1 and found a treasure!");
-        door1();
+      case 'treasureDoor':
+        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.treasureDoor);
+        console.log(GAME_TEXT.gameUnderscore);
+        treasureDoor(mainMenu);
+
         break;
-      case "door2":
-        console.log("You entereed door 2 and you've ran into a skeleton!");
-        door2();
+      case 'dangerDoor':
+        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.dangerDoor);
+        console.log(GAME_TEXT.gameUnderscore);
+        dangerDoor(mainMenu);
+
         break;
       default:
-        console.log("That is not a valid option");
+        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.invalidDoor);
+        console.log(GAME_TEXT.gameUnderscore);
     }
   });
 }
-
-renderGame();
-
 module.exports = { renderGame };

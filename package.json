@@ -2,9 +2,9 @@
   "name": "rpg-text-game",
   "version": "1.0.0",
   "description": "Command Line Text RPG",
-  "main": "bin/textRPG.js",
+  "main": "bin/index.js",
   "scripts": {
-    "start": "nodemon bin/textRPG.js"
+    "start": "nodemon bin/index.js"
   },
   "repository": {
     "type": "git",
