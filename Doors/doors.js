@@ -21,21 +21,21 @@ function treasureDoor(callback) {
   }).then(function (option) {
     switch (option) {
       case 'openChest':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.openChest);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
 
         break;
       case 'investigateChest':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.investigateChest);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
 
         break;
       case 'leaveChest':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
 
         break;
       default:
@@ -66,21 +66,21 @@ function dangerDoor(callback) {
   }).then(function (option) {
     switch (option) {
       case 'atackSkeleton':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.attack);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
 
         break;
       case 'runFromSkeleton':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
 
         break;
       case 'talkToTheSkeleton':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.riddle);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         break;
       default:
         console.log('That is not a valid option');

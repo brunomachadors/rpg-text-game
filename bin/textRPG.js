@@ -17,23 +17,23 @@ function mainMenu() {
   }).then(function (option) {
     switch (option) {
       case 'treasureDoor':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.treasureDoor);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         treasureDoor(mainMenu);
 
         break;
       case 'dangerDoor':
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.dangerDoor);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         dangerDoor(mainMenu);
 
         break;
       default:
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.invalidDoor);
-        console.log(GAME_TEXT.gameUnderscore);
+        console.log(GAME_TEXT.textSpacing);
     }
   });
 }

@@ -11,7 +11,7 @@ const GAME_TEXT = {
   talkSkeleton: 'The skeleton talks about a riddle:',
   riddle: 'The more of this there is, the less you see. What is it?',
   riddleAnswer: 'Darkness',
-  gameUnderscore: '________________',
+  textSpacing: '________________',
 };
 
 module.exports = GAME_TEXT;
