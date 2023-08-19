@@ -1,5 +1,5 @@
 const { rawlist, select } = require('@inquirer/prompts');
-const { treasureDoor, dangerDoor } = require('../Doors/doors');
+const { treasureDoor, dangerDoor } = require('../challenges/doors');
 const GAME_TEXT = require('../gameText/gameTex');
 
 function renderGame() {
