@@ -12,14 +12,9 @@ function characterSheet(classType) {
       getAbilityScoreModifier(CLASSES[classType].abilityScore.constitution),
     atributes: CLASSES[classType].abilityScore,
     proficiencies: CLASSES[classType].proficiency,
-    spells: CLASSES[classType].spells ? CLASSES[classType].spells : null,
+    spells: CLASSES[classType].spells ? CLASSES[classType].spells : 'No spells',
   };
   return CHARACTER;
 }
 
 module.exports = { characterSheet };
-
-console.log(characterSheet('fighter'));
-console.log(characterSheet('rogue'));
-console.log(characterSheet('wizard'));
-console.log(characterSheet('cleric'));
