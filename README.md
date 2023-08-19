@@ -12,7 +12,7 @@
 6. Attack System
 7. Enemy model
 8. Ridde system
-9. Combate system
+9. Combat system
 
 ## How to run
 
