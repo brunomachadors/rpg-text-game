@@ -8,7 +8,7 @@
 2. [x] Create Game
 3. [x] Select Door
 4. [x] Classes model
-5. Select Class
+5. [x] Select Class
 6. Attack System
 7. Enemy model
 8. Ridde system

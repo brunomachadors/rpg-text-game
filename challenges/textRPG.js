@@ -1,13 +1,37 @@
 const { rawlist, select } = require('@inquirer/prompts');
-const { treasureDoor, dangerDoor } = require('../challenges/doors');
+const { treasureDoor, dangerDoor } = require('./doors');
 const GAME_TEXT = require('../gameText/gameTex');
+const { characterSheet } = require('../characters/character');
+
+let character = {};
 
 function renderGame() {
   mainMenu();
 }
 
 function mainMenu() {
-  console.log(GAME_TEXT.mainMenu);
+  console.log(GAME_TEXT.menu.mainMenu);
+
+  selectCharacter();
+}
+
+function selectCharacter() {
+  rawlist({
+    message: GAME_TEXT.menu.selectCharacter,
+    choices: [
+      { name: GAME_TEXT.classes.fighter, value: 'fighter' },
+      { name: GAME_TEXT.classes.rogue, value: 'rogue' },
+      { name: GAME_TEXT.classes.wizard, value: 'dangerDoor' },
+      { name: GAME_TEXT.classes.cleric, value: 'dangerDoor' },
+    ],
+  }).then(function (classType) {
+    this.character = characterSheet(classType);
+    startGame();
+  });
+}
+
+function startGame() {
+  console.log(this.character);
   rawlist({
     message: GAME_TEXT.doors,
     choices: [

@@ -1,5 +1,16 @@
 const GAME_TEXT = {
-  mainMenu: 'Welcome to the Text RPG',
+  menu: {
+    mainMenu: 'Welcome to the Text RPG',
+    selectCharacter: 'Before we start select your class:',
+  },
+
+  classes: {
+    fighter: `Fighter: Combat expert`,
+    rogue: `Rogue: Disable traps and stealth`,
+    wizard: `Wizard: Cast spells and solve riddles`,
+    cleric: `Cleric: Turn undeads`,
+  },
+
   doors: 'You entered a dungeon and you see two doors, select one door',
   treasureDoor: 'You entered the door and found a treasure!',
   dangerDoor: `You entered the door and you've ran into a skeleton!`,

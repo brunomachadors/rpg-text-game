@@ -1,3 +1,3 @@
-const { renderGame } = require('./textRPG');
+const { renderGame } = require('../challenges/textRPG');
 
 renderGame();
