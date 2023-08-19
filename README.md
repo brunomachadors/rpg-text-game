@@ -1,8 +1,8 @@
 # rpg-text-game
 
-## This project has the objective of create a text game RPG based Dungeons and Dragons on medieval theme
+_This project has the objective of create a text game RPG based Dungeons and Dragons on medieval theme_
 
-### Tasks:
+## Tasks:
 
 1. [x] Copy to do list
 2. [x] Create Game
