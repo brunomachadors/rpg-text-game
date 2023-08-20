@@ -40,7 +40,7 @@ const GAME_TEXT = {
     riddleFailedAnswer: `You did not got the right answer try again:`,
     riddleCount: (count) => `You have more ${count} chances.`,
     riddleTitle: '===================RIDDLE=======================',
-  }
+  },
 };
 
 module.exports = GAME_TEXT;
