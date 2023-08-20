@@ -1,6 +1,10 @@
+const {
+  accuracy,
+  damageRange,
+  attack,
+  damage,
+} = require('../../attacks/attack');
 const WEAPON = require('../../attacks/weapons');
-const { d20, roll } = require('../../rolls/rolls');
-const { getAbilityScoreModifier } = require('../abilityScore');
 const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
@@ -14,11 +18,11 @@ const ABILITY_SCORE = {
 
 const BLUNT = {
   name: WEAPON['blunt'].name,
-  attack: () =>
-    d20() +
-    getAbilityScoreModifier(ABILITY_SCORE.strength) +
-    proficiencyModifier,
-  damage: () => roll(WEAPON['blunt'].damage),
+  atribute: WEAPON['blunt'].atribute,
+  accuracy: accuracy(WEAPON['blunt'], ABILITY_SCORE, proficiencyModifier),
+  damageRange: damageRange(WEAPON['blunt'], ABILITY_SCORE),
+  attack: attack(WEAPON['blunt'], ABILITY_SCORE, proficiencyModifier),
+  damage: damage(WEAPON['blunt'], ABILITY_SCORE),
 };
 
 const ATTACKS = [BLUNT];

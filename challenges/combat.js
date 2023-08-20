@@ -1,5 +1,6 @@
 const { rawlist } = require('@inquirer/prompts');
 const { d20 } = require('../rolls/rolls');
+const GAME_TEXT = require('../gameText/gameTex');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -33,17 +34,18 @@ function playerAttack() {
   }).then(function (attack) {
     this.attackRoll = this.character.attacks[attack].attack();
     this.attackDamage = this.character.attacks[attack].damage();
-    console.log(this.character.attacks[attack].name);
+    console.log(GAME_TEXT.textSpacing);
     console.log('ATTACK ROLL: ' + this.attackRoll);
+    console.log(`YOU'VE HITIED`);
     console.log('ATTACK DAMAGE: ' + this.attackDamage);
     monsterHP = monsterHP - this.attackDamage;
-    console.log('Você acertou o esqueleto');
-    console.log('HP esqueleto:' + monsterHP);
+    console.log(GAME_TEXT.textSpacing);
 
     if (monsterHP > 0) {
+      console.log('SKELETON HP:' + monsterHP);
       mosnterAttack();
     } else {
-      console.log('Monstro morreu');
+      console.log('SKELETON DIED');
     }
   });
 }
