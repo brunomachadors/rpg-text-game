@@ -1,6 +1,9 @@
 function getAbilityScoreModifier(abilityScore) {
   let modifier = 0;
   switch (abilityScore) {
+    case 8 || 9:
+      modifier = -1;
+      break;
     case 10 || 11:
       modifier = 0;
       break;
