@@ -11,6 +11,15 @@ const GAME_TEXT = {
     cleric: `Cleric: Turn undeads`,
   },
 
+  combat: {
+    attack: '=====================ATTACK=====================',
+    gameOver: '====================GAME=OVER===================',
+    damage: '=====================DAMAGE=====================',
+    monster: '====================MONSTER=====================',
+    monsterAttack: '================MONSTER=ATTACK==================',
+    monsterDamage: '================MONSTER=DAMAGE==================',
+  },
+
   characterSheet: '===============CHARACTER=SHEET==================',
   textSpacing: '================================================',
 

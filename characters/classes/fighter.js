@@ -36,9 +36,10 @@ const BOW = {
 };
 
 const ATTACKS = [SWORD, BOW];
+
 const ARMOR = {
-  heavy: 'full plate',
-  ca: 18,
+  type: 'full plate',
+  ac: 18,
 };
 
 const FIGHTER = {

@@ -29,10 +29,16 @@ const ATTACKS = [BLUNT];
 
 const SPELLS = {};
 
+const ARMOR = {
+  type: 'Chainmail',
+  ac: 16,
+};
+
 const CLERIC = {
   baseHp: 8,
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
+  armor: ARMOR,
   spells: SPELLS,
   proficiency: {
     turnUndead: true,
