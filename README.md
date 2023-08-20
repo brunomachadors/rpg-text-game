@@ -4,13 +4,13 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 
 ## Tasks:
 
-1. Copy to do list [X]
-2. Create Game [X]
-3. Select Door [X]
-4. Classes model [X]
-5. Select Class [X]
-6. Attack System [X]
-7. Enemy model [X]
+1. Copy to do list [x]
+2. Create Game [x]
+3. Select Door [x]
+4. Classes model [x]
+5. Select Class [x]
+6. Attack System [x]
+7. Enemy model [x]
 8. Combat system []
 9. Ridde system []
 10. Spells []
