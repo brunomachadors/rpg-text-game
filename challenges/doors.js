@@ -1,11 +1,13 @@
 const { rawlist } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
 const { combat } = require('./combat');
+const { riddle } = require('../challenges/riddles');
 
 function setDoor(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
   this.character = character;
   this.startGame = startGame;
+  this.combat = combat;
 }
 
 function treasureDoor(character) {
@@ -56,6 +58,7 @@ function treasureDoor(character) {
 
 function dangerDoor(character) {
   this.character = character;
+
   rawlist({
     message: 'Pick one:',
     choices: [
@@ -78,20 +81,16 @@ function dangerDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.attack);
         console.log(GAME_TEXT.textSpacing);
-        combat('skeleton');
+        this.combat('skeleton');
         break;
       case 'runFromSkeleton':
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
         console.log(GAME_TEXT.textSpacing);
         this.mainMenu();
-
         break;
       case 'talkToTheSkeleton':
-        console.log(GAME_TEXT.textSpacing);
-        console.log(GAME_TEXT.riddle);
-        console.log(GAME_TEXT.textSpacing);
-        this.mainMenu();
+        riddle();
         break;
       default:
         console.log('That is not a valid option');

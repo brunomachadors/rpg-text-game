@@ -32,8 +32,15 @@ const GAME_TEXT = {
   leave: 'COWAAAARRRRDDD!!!!',
   attack: 'You attack the skeleton',
   talkSkeleton: 'The skeleton talks about a riddle:',
-  riddle: 'The more of this there is, the less you see. What is it?',
-  riddleAnswer: 'Darkness',
+
+  riddle: {
+    riddle: 'The more of this there is, the less you see. What is it?',
+    riddleAnswer: 'darkness',
+    riddleCountZero: 'The skeleton arrived and you died.',
+    riddleFailedAnswer: `You did not got the right answer try again:`,
+    riddleCount: (count) => `You have more ${count} chances.`,
+    riddleTitle: '===================RIDDLE=======================',
+  }
 };
 
 module.exports = GAME_TEXT;
