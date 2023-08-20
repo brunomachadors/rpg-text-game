@@ -1,28 +1,30 @@
 const WEAPON = {
   sword: {
+    name: 'Longsword',
     atribute: 'strength',
     damage: 8,
-    ranged: false,
+    description: 'Longsword attacks with strength and deals 1d8 damange',
   },
   bow: {
+    name: 'Longbow',
     atribute: 'dexterity',
     damage: 8,
-    ranged: true,
   },
   dagger: {
+    name: 'Dagger',
     atribute: 'dexterity',
     damage: 4,
-    ranged: false,
   },
   blunt: {
+    name: 'Blunt',
     atribute: 'strength',
     damage: 6,
-    ranged: false,
+  },
+  staff: {
+    name: 'Quarterstaff',
+    atribute: 'strength',
+    damage: 6,
   },
 };
 
-function getWeapon(weapon) {
-  return WEAPON[weapon];
-}
-
-module.exports = { getWeapon };
+module.exports = WEAPON;

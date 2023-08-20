@@ -11,4 +11,4 @@ function d20(dices = 1) {
   return totalRoll;
 }
 
-module.exports = { roll };
+module.exports = { roll, d20 };

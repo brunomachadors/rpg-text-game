@@ -11,6 +11,9 @@ const GAME_TEXT = {
     cleric: `Cleric: Turn undeads`,
   },
 
+  characterSheet: '===============CHARACTER=SHEET==================',
+  textSpacing: '================================================',
+
   doors: 'You entered a dungeon and you see two doors, select one door',
   treasureDoor: 'You entered the door and found a treasure!',
   dangerDoor: `You entered the door and you've ran into a skeleton!`,
@@ -18,11 +21,10 @@ const GAME_TEXT = {
   openChest: 'You found a trap and died. RIP',
   investigateChest: 'You found trap and you can disable it!',
   leave: 'COWAAAARRRRDDD!!!!',
-  attack: 'You attack the skeleton with your sword',
+  attack: 'You attack the skeleton',
   talkSkeleton: 'The skeleton talks about a riddle:',
   riddle: 'The more of this there is, the less you see. What is it?',
   riddleAnswer: 'Darkness',
-  textSpacing: '________________',
 };
 
 module.exports = GAME_TEXT;
