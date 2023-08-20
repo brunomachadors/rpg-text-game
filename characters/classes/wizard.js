@@ -1,5 +1,5 @@
 const WEAPON = require('../../attacks/weapons');
-const { d20 } = require('../../rolls/rolls');
+const { d20, roll } = require('../../rolls/rolls');
 const { getAbilityScoreModifier } = require('../abilityScore');
 const proficiencyModifier = 2;
 

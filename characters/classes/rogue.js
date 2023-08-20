@@ -1,5 +1,5 @@
 const WEAPON = require('../../attacks/weapons');
-const { d20 } = require('../../rolls/rolls');
+const { d20, roll } = require('../../rolls/rolls');
 const { getAbilityScoreModifier } = require('../abilityScore');
 const proficiencyModifier = 2;
 
@@ -12,16 +12,16 @@ const ABILITY_SCORE = {
   charisma: 14,
 };
 
-const ATTACKS = {
-  dagger: {
-    name: WEAPON['dagger'].name,
-    attack: () =>
-      d20() +
-      getAbilityScoreModifier(ABILITY_SCORE.dexterity) +
-      proficiencyModifier,
-    damage: () => roll(WEAPON['dagger'].damage),
-  },
+const DAGGER = {
+  name: WEAPON['dagger'].name,
+  attack: () =>
+    d20() +
+    getAbilityScoreModifier(ABILITY_SCORE.dexterity) +
+    proficiencyModifier,
+  damage: () => roll(WEAPON['dagger'].damage),
 };
+
+const ATTACKS = [DAGGER];
 
 const ARMOR = {
   heavy: 'Leather',
