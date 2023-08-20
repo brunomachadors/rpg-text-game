@@ -13,7 +13,7 @@ function damageRange(weapon, abilityScore) {
     abilityScore[weapon.atribute]
   );
 
-  return `1-${weapon.damage} + ${abilityScoreModifier}`;
+  return `1-${weapon.maxDamage} + ${abilityScoreModifier}`;
 }
 
 function attack(weapon, abilityScore, proficiencyModifier) {
@@ -28,7 +28,7 @@ function damage(weapon, abilityScore) {
     abilityScore[weapon.atribute]
   );
 
-  return () => roll(weapon.damage) + abilityScoreModifier;
+  return () => roll(weapon.maxDamage) + abilityScoreModifier;
 }
 
 module.exports = { accuracy, damageRange, attack, damage };
