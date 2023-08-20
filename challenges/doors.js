@@ -1,4 +1,4 @@
-const { select } = require('@inquirer/prompts');
+const { rawlist } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
 const { combat } = require('./combat');
 
@@ -8,9 +8,9 @@ function setDoor(mainMenu, character, startGame) {
     this.startGame = startGame;
 }
 
-function treasureDoor(mainMenu, character) {
+function treasureDoor(character) {
     this.character = character;
-    select({
+    rawlist({
         message: 'Pick one:',
         choices: [
             {
@@ -56,7 +56,7 @@ function treasureDoor(mainMenu, character) {
 
 function dangerDoor(character) {
     this.character = character;
-    select({
+    rawlist({
         message: 'Pick one:',
         choices: [
             {
