@@ -1,3 +1,4 @@
+const GAME_TEXT = require('../gameText/gameTex');
 const { getAbilityScoreModifier } = require('./abilityScore');
 const CLASSES = require('./classes');
 
@@ -20,4 +21,18 @@ function characterSheet(classType) {
   return CHARACTER;
 }
 
-module.exports = { characterSheet };
+function characterStatus() {
+  console.log(GAME_TEXT.textSpacing);
+  console.log(GAME_TEXT.character.characterSheet);
+  console.log(GAME_TEXT.textSpacing);
+  console.log(this.character);
+  console.log(GAME_TEXT.textSpacing);
+}
+
+function characterStatusShort() {
+  console.log(GAME_TEXT.character.hpTitle);
+  console.log(GAME_TEXT.character.hp + this.character.hp);
+  console.log(GAME_TEXT.textSpacing);
+}
+
+module.exports = { characterSheet, characterStatus, characterStatusShort };

@@ -1,3 +1,4 @@
+const GAME_TEXT = require('../gameText/gameTex');
 const { d20, roll } = require('../rolls/rolls');
 
 const MONSTERS = {
@@ -7,8 +8,8 @@ const MONSTERS = {
     ac: 12,
     attacks: [
       (sword = {
-        monsterAttack: monsterAttack(20),
-        monsterDamage: monsterDamage(60),
+        monsterAttack: monsterAttack(4),
+        monsterDamage: monsterDamage(6),
       }),
     ],
     loot: ['10 gold pieces', 'potion'],

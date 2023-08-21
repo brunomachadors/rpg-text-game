@@ -11,16 +11,23 @@ const GAME_TEXT = {
     cleric: `Cleric: Turn undeads`,
   },
 
+  character: {
+    characterSheet: '===============CHARACTER=SHEET==================',
+    hpTitle: '=================CHARACTER=HP===================',
+    hp: 'HP:',
+  },
+
   combat: {
-    attack: '=====================ATTACK=====================',
+    attack: '===============CHARACTER=ATTACK=================',
     gameOver: '====================GAME=OVER===================',
     damage: '=====================DAMAGE=====================',
     monster: '====================MONSTER=====================',
     monsterAttack: '================MONSTER=ATTACK==================',
     monsterDamage: '================MONSTER=DAMAGE==================',
+    hit: `YOU'VE HITTED`,
+    attackDamage: 'ATTACK DAMAGE: ',
   },
 
-  characterSheet: '===============CHARACTER=SHEET==================',
   textSpacing: '================================================',
 
   doors: 'You entered a dungeon and you see two doors, select one door',

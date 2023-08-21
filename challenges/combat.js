@@ -2,6 +2,7 @@ const { rawlist } = require('@inquirer/prompts');
 const { d20 } = require('../rolls/rolls');
 const GAME_TEXT = require('../gameText/gameTex');
 const MONSTERS = require('../challenges/monsters');
+const { characterStatusShort } = require('../characters/character');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -14,7 +15,6 @@ function combat(monster) {
   this.attackRoll;
   this.attackDamage;
   this.monster = MONSTERS[monster];
-  console.log(this.monster.name + ' life: ' + this.monster.hp);
 
   this.character.attacks.forEach(function callback(attack, index) {
     attacks.push({ name: attack.name, value: index });
@@ -33,7 +33,6 @@ function playerAttack() {
   }).then(function (attack) {
     this.attackRoll = this.character.attacks[attack].attack();
     this.attackDamage = this.character.attacks[attack].damage();
-
     console.log(GAME_TEXT.combat.attack);
     console.log('ATTACK ROLL: ' + this.attackRoll);
     attackHit(this.attackDamage);
@@ -53,9 +52,12 @@ function monsterAttack() {
     let monsterDamage = this.monster.attacks[0].monsterDamage();
     console.log('DAMAGE:' + monsterDamage);
     this.character.hp -= monsterDamage;
+    characterStatusShort();
 
     if (this.character.hp <= 0) {
       console.log(GAME_TEXT.combat.gameOver);
+    } else {
+      playerAttack();
     }
   } else {
     console.log(`MONSTER MISSSED`);
@@ -68,8 +70,8 @@ function attackHit(damage) {
   if (this.attackRoll >= this.monster.ac) {
     this.attackDamage = damage;
     console.log(GAME_TEXT.combat.damage);
-    console.log(`YOU'VE HITTED`);
-    console.log('ATTACK DAMAGE: ' + this.attackDamage);
+    console.log(GAME_TEXT.combat.hit);
+    console.log(GAME_TEXT.combat.attackDamage + this.attackDamage);
     this.monster.hp = this.monster.hp - this.attackDamage;
   } else {
     console.log(`YOU'VE MISSED`);
@@ -78,7 +80,6 @@ function attackHit(damage) {
 
 function monsterStatus() {
   console.log(GAME_TEXT.combat.monster);
-
   if (this.monster.hp > 0) {
     console.log(`${this.monster.name} HP: ${this.monster.hp}`.toUpperCase());
     monsterAttack();
