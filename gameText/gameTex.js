@@ -22,8 +22,8 @@ const GAME_TEXT = {
   combat: {
     attack: '===============CHARACTER=ATTACK=================',
     gameOver: '====================GAME=OVER===================',
-    damage: '=====================DAMAGE=====================',
-    monster: '====================MONSTER=====================',
+    damage: '---------------------DAMAGE---------------------',
+    monster: '--------------------MONSTER--------------------',
     monsterAttack: '================MONSTER=ATTACK==================',
     monsterDamage: '================MONSTER=DAMAGE==================',
     hit: `YOU'VE HITTED`,

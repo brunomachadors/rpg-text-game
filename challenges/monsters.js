@@ -8,8 +8,8 @@ const MONSTERS = {
     ac: 12,
     attacks: [
       (sword = {
-        monsterAttack: monsterAttack(4),
-        monsterDamage: monsterDamage(6),
+        monsterAttack: monsterAttack(3),
+        monsterDamage: monsterDamage(5),
       }),
     ],
     loot: ['10 gold pieces', 'potion'],

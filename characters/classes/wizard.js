@@ -4,7 +4,9 @@ const {
   attack,
   damage,
 } = require('../../attacks/attack');
+const { spellCasting } = require('../../attacks/spellAttack');
 const WEAPON = require('../../attacks/weapons');
+const CANTRIP = require('../../spells/arcaneSpells');
 const { getAbilityScoreModifier } = require('../abilityScore');
 
 const proficiencyModifier = 2;
@@ -21,12 +23,22 @@ const ABILITY_SCORE = {
 const STAFF = {
   name: WEAPON['staff'].name,
   atribute: WEAPON['staff'].atribute,
+  description: WEAPON['staff'].description,
   accuracy: accuracy(WEAPON['staff'], ABILITY_SCORE, proficiencyModifier),
   damageRange: damageRange(WEAPON['staff'], ABILITY_SCORE),
   attack: attack(WEAPON['staff'], ABILITY_SCORE, proficiencyModifier),
   damage: damage(WEAPON['staff'], ABILITY_SCORE),
 };
-const ATTACKS = [STAFF];
+
+const FIREBOLT = spellCasting(CANTRIP.firebolt, ABILITY_SCORE.inteligence);
+const RAY_OF_FROST = spellCasting(
+  CANTRIP.rayOfFrost,
+  ABILITY_SCORE.inteligence
+);
+//console.log(spellCasting(CANTRIP.firebolt, ABILITY_SCORE.inteligence));
+//console.log(CANTRIP.firebolt);
+
+const ATTACKS = [STAFF, FIREBOLT, RAY_OF_FROST];
 
 const ARMOR = {
   type: 'Robe',

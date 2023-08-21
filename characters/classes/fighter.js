@@ -20,6 +20,7 @@ const ABILITY_SCORE = {
 const SWORD = {
   name: WEAPON['sword'].name,
   atribute: WEAPON['sword'].atribute,
+  description: WEAPON['sword'].description,
   accuracy: accuracy(WEAPON['sword'], ABILITY_SCORE, proficiencyModifier),
   damageRange: damageRange(WEAPON['sword'], ABILITY_SCORE),
   attack: attack(WEAPON['sword'], ABILITY_SCORE, proficiencyModifier),
@@ -29,6 +30,7 @@ const SWORD = {
 const BOW = {
   name: WEAPON['bow'].name,
   atribute: WEAPON['bow'].atribute,
+  description: WEAPON['bow'].description,
   accuracy: accuracy(WEAPON['bow'], ABILITY_SCORE, proficiencyModifier),
   damageRange: damageRange(WEAPON['bow'], ABILITY_SCORE),
   attack: attack(WEAPON['bow'], ABILITY_SCORE, proficiencyModifier),

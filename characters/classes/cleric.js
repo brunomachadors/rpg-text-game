@@ -16,16 +16,17 @@ const ABILITY_SCORE = {
   charisma: 12,
 };
 
-const BLUNT = {
-  name: WEAPON['blunt'].name,
-  atribute: WEAPON['blunt'].atribute,
-  accuracy: accuracy(WEAPON['blunt'], ABILITY_SCORE, proficiencyModifier),
-  damageRange: damageRange(WEAPON['blunt'], ABILITY_SCORE),
-  attack: attack(WEAPON['blunt'], ABILITY_SCORE, proficiencyModifier),
-  damage: damage(WEAPON['blunt'], ABILITY_SCORE),
+const MACE = {
+  name: WEAPON['mace'].name,
+  atribute: WEAPON['mace'].atribute,
+  description: WEAPON['mace'].description,
+  accuracy: accuracy(WEAPON['mace'], ABILITY_SCORE, proficiencyModifier),
+  damageRange: damageRange(WEAPON['mace'], ABILITY_SCORE),
+  attack: attack(WEAPON['mace'], ABILITY_SCORE, proficiencyModifier),
+  damage: damage(WEAPON['mace'], ABILITY_SCORE),
 };
 
-const ATTACKS = [BLUNT];
+const ATTACKS = [MACE];
 
 const SPELLS = {};
 
