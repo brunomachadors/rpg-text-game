@@ -13,7 +13,7 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 - [x] Enemy model
 - [x] Combat system
 - [x] Ridde system
-- [ ] Spells
+- [x] Spells
 - [ ] Disable trap and sneak attack
 - [ ] Turn Undead
 
