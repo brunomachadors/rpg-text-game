@@ -25,13 +25,14 @@ const GAME_TEXT = {
   talkSkeleton: 'The skeleton talks about a riddle:',
 
   riddle: {
-    riddle: 'The more of this there is, the less you see. What is it?',
-    riddleAnswer: 'darkness',
+    riddle: '\n The more of\n this there is,\n the less you see.\n What is it?',
+    riddleAnswer: ['darkness', 'dark'],
     riddleCountZero: 'The skeleton arrived and you died.',
     riddleFailedAnswer: `You did not got the right answer try again:`,
     riddleCount: (count) => `You have more ${count} chances.`,
     riddleTitle: '===================RIDDLE=======================',
-  }
+    solved: '===================SOLVED=======================',
+  },
 };
 
 module.exports = GAME_TEXT;
