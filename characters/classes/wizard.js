@@ -5,6 +5,7 @@ const {
   damage,
 } = require('../../attacks/attack');
 const WEAPON = require('../../attacks/weapons');
+const { getAbilityScoreModifier } = require('../abilityScore');
 
 const proficiencyModifier = 2;
 
@@ -27,6 +28,11 @@ const STAFF = {
 };
 const ATTACKS = [STAFF];
 
+const ARMOR = {
+  type: 'Robe',
+  ac: 10 + getAbilityScoreModifier(ABILITY_SCORE.dexterity),
+};
+
 const SPELLS = {};
 
 const WIZARD = {
@@ -34,6 +40,7 @@ const WIZARD = {
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
   spells: SPELLS,
+  armor: ARMOR,
   proficiency: {
     spellbook: true,
   },

@@ -1,10 +1,15 @@
 const { rawlist } = require('@inquirer/prompts');
 const { treasureDoor, dangerDoor, setDoor } = require('./doors');
 const GAME_TEXT = require('../gameText/gameTex');
-const { characterSheet } = require('../characters/character');
+const {
+  characterSheet,
+  characterStatus,
+  characterStatusStyled,
+} = require('../characters/character');
 const { setCombat } = require('./combat');
 
 function renderGame() {
+  console.clear();
   mainMenu();
 }
 
@@ -24,11 +29,9 @@ function selectCharacter() {
     ],
   }).then(function (classType) {
     this.character = characterSheet(classType);
-    console.log(GAME_TEXT.textSpacing);
-    console.log(GAME_TEXT.characterSheet);
-    console.log(GAME_TEXT.textSpacing);
-    console.log(this.character);
-    console.log(GAME_TEXT.textSpacing);
+    console.clear();
+    //characterStatus();
+    characterStatusStyled();
     startGame();
   });
 }
@@ -44,6 +47,7 @@ function startGame() {
       { name: 'Right Door', value: 'dangerDoor' },
     ],
   }).then(function (option) {
+    console.clear();
     switch (option) {
       case 'treasureDoor':
         console.log(GAME_TEXT.textSpacing);

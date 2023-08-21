@@ -5,6 +5,8 @@ const {
   damage,
 } = require('../../attacks/attack');
 const WEAPON = require('../../attacks/weapons');
+const { getAbilityScoreModifier } = require('../abilityScore');
+
 const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
@@ -21,15 +23,15 @@ const DAGGER = {
   atribute: WEAPON['dagger'].atribute,
   accuracy: accuracy(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
   damageRange: damageRange(WEAPON['dagger'], ABILITY_SCORE),
-  attacks: attack(WEAPON['dagger'], ABILITY_SCORE),
+  attack: attack(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
   damage: damage(WEAPON['dagger'], ABILITY_SCORE),
 };
 
 const ATTACKS = [DAGGER];
 
 const ARMOR = {
-  heavy: 'Leather',
-  ca: 14 + ABILITY_SCORE.dexterity,
+  type: 'Leather',
+  ac: 12 + getAbilityScoreModifier(ABILITY_SCORE.dexterity),
 };
 
 const ROGUE = {

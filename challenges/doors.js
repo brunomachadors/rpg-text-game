@@ -2,6 +2,7 @@ const { rawlist } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
 const { combat } = require('./combat');
 const { riddle } = require('../challenges/riddles');
+const { gameOver } = require('../gameText/gameStatus');
 
 function setDoor(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -33,6 +34,7 @@ function treasureDoor(character) {
       case 'openChest':
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.openChest);
+        console.log(GAME_TEXT.textSpacing);
         gameOver();
         break;
       case 'investigateChest':
@@ -46,7 +48,7 @@ function treasureDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
         console.log(GAME_TEXT.textSpacing);
-        this.startGame();
+        this.mainMenu();
         break;
       default:
         console.log('That is not a valid option');
@@ -79,7 +81,7 @@ function dangerDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.attack);
         console.log(GAME_TEXT.textSpacing);
-        this.combat();
+        this.combat('skeleton');
         break;
       case 'runFromSkeleton':
         console.log(GAME_TEXT.textSpacing);
