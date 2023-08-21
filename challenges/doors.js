@@ -2,6 +2,7 @@ const { rawlist } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
 const { combat } = require('./combat');
 const { riddle } = require('../challenges/riddles');
+const { gameOver } = require('../gameText/gameStatus');
 
 function setDoor(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -34,8 +35,7 @@ function treasureDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.openChest);
         console.log(GAME_TEXT.textSpacing);
-        this.mainMenu();
-
+        gameOver();
         break;
       case 'investigateChest':
         console.log(GAME_TEXT.textSpacing);

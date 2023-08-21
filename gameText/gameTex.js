@@ -15,6 +15,8 @@ const GAME_TEXT = {
     characterSheet: '===============CHARACTER=SHEET==================',
     hpTitle: '=================CHARACTER=HP===================',
     hp: 'HP:',
+    attacks: '====================ATTACKS====================',
+    proficiency: '==================PROFICIENCY==================',
   },
 
   combat: {
