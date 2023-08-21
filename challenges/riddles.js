@@ -1,7 +1,14 @@
 const { input } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
+const { gameOver, playAgain } = require('../gameText/gameStatus');
 
 let count = 3;
+
+function setRiddle(mainMenu, character, startGame) {
+  this.mainMenu = mainMenu;
+  this.character = character;
+  this.startGame = startGame;
+}
 
 function riddle() {
   console.log(GAME_TEXT.textSpacing);
@@ -26,4 +33,4 @@ function riddle() {
     }
   });
 }
-module.exports = { riddle };
+module.exports = { riddle, setRiddle };

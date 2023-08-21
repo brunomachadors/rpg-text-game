@@ -1,7 +1,11 @@
 const { rawlist } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameTex');
 const MONSTERS = require('../challenges/monsters');
-const { characterStatusShort } = require('../characters/character');
+const {
+  characterStatusStyled,
+  characterStatusShort,
+} = require('../characters/character');
+const { gameOver, playAgain } = require('../gameText/gameStatus');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -22,6 +26,8 @@ function combat(monster) {
   if (this.character.spells) {
     console.log('BOOM');
   }
+
+  characterStatusStyled();
   playerAttack();
 }
 
@@ -30,6 +36,7 @@ function playerAttack() {
     message: 'SELECT ATTACK',
     choices: attacks,
   }).then(function (attack) {
+    console.log(this.character.attacks[attack].description);
     this.attackRoll = this.character.attacks[attack].attack();
     this.attackDamage = this.character.attacks[attack].damage();
     console.log(GAME_TEXT.combat.attack);
@@ -45,7 +52,10 @@ function monsterAttack() {
   console.log(
     'ATTACK:' + monsterAttack + ' VS ARMOR CLASS:' + this.character.ac
   );
+  monsterHit(monsterAttack);
+}
 
+function monsterHit(monsterAttack) {
   if (monsterAttack >= this.character.ac) {
     console.log(`YOU'RE HITTED`);
     let monsterDamage = this.monster.attacks[0].monsterDamage();
@@ -54,7 +64,7 @@ function monsterAttack() {
     characterStatusShort();
 
     if (this.character.hp <= 0) {
-      console.log(GAME_TEXT.combat.gameOver);
+      gameOver();
     } else {
       playerAttack();
     }
@@ -64,11 +74,9 @@ function monsterAttack() {
     playerAttack();
   }
 }
-
 function attackHit(damage) {
   if (this.attackRoll >= this.monster.ac) {
     this.attackDamage = damage;
-    console.log(GAME_TEXT.combat.damage);
     console.log(GAME_TEXT.combat.hit);
     console.log(GAME_TEXT.combat.attackDamage + this.attackDamage);
     this.monster.hp = this.monster.hp - this.attackDamage;
@@ -85,6 +93,7 @@ function monsterStatus() {
   } else {
     console.log(`${this.monster.name} died`.toUpperCase());
     console.log(`DROPPED: ${this.monster.loot}`);
+    playAgain();
   }
 }
 

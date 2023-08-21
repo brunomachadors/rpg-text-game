@@ -10,7 +10,7 @@ function characterSheet(classType) {
       CLASSES[classType].baseHp +
       getAbilityScoreModifier(CLASSES[classType].abilityScore.constitution),
     ac: CLASSES[classType].armor.ac,
-    atributes: CLASSES[classType].abilityScore,
+    abilityScore: CLASSES[classType].abilityScore,
     attacks: CLASSES[classType].attacks ? CLASSES[classType].attacks : null,
     spells: CLASSES[classType].spells ? CLASSES[classType].spells : null,
     proficiencies: CLASSES[classType].proficiency
@@ -46,7 +46,7 @@ function characterStatusStyled() {
 }
 
 function displayInfo() {
-  console.log(`CLASS: ${this.character.class}`);
+  console.log(`CLASS: ${this.character.class}`.toUpperCase());
   console.log(`LEVEL: ${this.character.level}`);
   console.log(`HP: ${this.character.hp}`);
   console.log(`ARMOR CLASS: ${this.character.ac}`);
@@ -56,33 +56,33 @@ function displayInfo() {
 function displayAbilityScore() {
   console.log(`ABILITY SCORE:`);
   console.log(
-    `  STR: ${this.character.atributes.strength} (${getAbilityScoreModifier(
-      this.character.atributes.strength
+    `  STR: ${this.character.abilityScore.strength} (${getAbilityScoreModifier(
+      this.character.abilityScore.strength
     )})`
   );
   console.log(
-    `  DEX: ${this.character.atributes.dexterity} (${getAbilityScoreModifier(
-      this.character.atributes.dexterity
+    `  DEX: ${this.character.abilityScore.dexterity} (${getAbilityScoreModifier(
+      this.character.abilityScore.dexterity
     )})`
   );
   console.log(
-    `  CON: ${this.character.atributes.constitution} (${getAbilityScoreModifier(
-      this.character.atributes.constitution
+    `  CON: ${
+      this.character.abilityScore.constitution
+    } (${getAbilityScoreModifier(this.character.abilityScore.constitution)})`
+  );
+  console.log(
+    `  INT: ${
+      this.character.abilityScore.inteligence
+    } (${getAbilityScoreModifier(this.character.abilityScore.inteligence)})`
+  );
+  console.log(
+    `  WIS: ${this.character.abilityScore.wisdom} (${getAbilityScoreModifier(
+      this.character.abilityScore.wisdom
     )})`
   );
   console.log(
-    `  INT: ${this.character.atributes.inteligence} (${getAbilityScoreModifier(
-      this.character.atributes.inteligence
-    )})`
-  );
-  console.log(
-    `  WIS: ${this.character.atributes.wisdom} (${getAbilityScoreModifier(
-      this.character.atributes.wisdom
-    )})`
-  );
-  console.log(
-    `  CHA: ${this.character.atributes.charisma} (${getAbilityScoreModifier(
-      this.character.atributes.charisma
+    `  CHA: ${this.character.abilityScore.charisma} (${getAbilityScoreModifier(
+      this.character.abilityScore.charisma
     )})`
   );
   console.log(GAME_TEXT.textSpacing);

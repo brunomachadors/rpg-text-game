@@ -7,6 +7,7 @@ const {
   characterStatusStyled,
 } = require('../characters/character');
 const { setCombat } = require('./combat');
+const { setRiddle } = require('./riddles');
 
 function renderGame() {
   console.clear();
@@ -39,6 +40,7 @@ function selectCharacter() {
 function startGame() {
   setDoor(mainMenu, this.character, startGame);
   setCombat(mainMenu, this.character, startGame);
+  setRiddle(mainMenu, this.character, startGame);
 
   rawlist({
     message: GAME_TEXT.doors,

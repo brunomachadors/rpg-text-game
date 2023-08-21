@@ -21,6 +21,7 @@ const ABILITY_SCORE = {
 const DAGGER = {
   name: WEAPON['dagger'].name,
   atribute: WEAPON['dagger'].atribute,
+  description: WEAPON['dagger'].description,
   accuracy: accuracy(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
   damageRange: damageRange(WEAPON['dagger'], ABILITY_SCORE),
   attack: attack(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
