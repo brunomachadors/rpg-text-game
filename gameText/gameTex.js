@@ -11,7 +11,25 @@ const GAME_TEXT = {
     cleric: `Cleric: Turn undeads`,
   },
 
-  characterSheet: '===============CHARACTER=SHEET==================',
+  character: {
+    characterSheet: '===============CHARACTER=SHEET==================',
+    hpTitle: '=================CHARACTER=HP===================',
+    hp: 'HP:',
+    attacks: '====================ATTACKS====================',
+    proficiency: '==================PROFICIENCY==================',
+  },
+
+  combat: {
+    attack: '===============CHARACTER=ATTACK=================',
+    gameOver: '====================GAME=OVER===================',
+    damage: '=====================DAMAGE=====================',
+    monster: '====================MONSTER=====================',
+    monsterAttack: '================MONSTER=ATTACK==================',
+    monsterDamage: '================MONSTER=DAMAGE==================',
+    hit: `YOU'VE HITTED`,
+    attackDamage: 'ATTACK DAMAGE: ',
+  },
+
   textSpacing: '================================================',
 
   doors: 'You entered a dungeon and you see two doors, select one door',
@@ -31,7 +49,7 @@ const GAME_TEXT = {
     riddleFailedAnswer: `You did not got the right answer try again:`,
     riddleCount: (count) => `You have more ${count} chances.`,
     riddleTitle: '===================RIDDLE=======================',
-  }
+  },
 };
 
 module.exports = GAME_TEXT;
