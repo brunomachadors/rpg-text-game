@@ -5,7 +5,6 @@ const {
   damage,
 } = require('../../attacks/weaponAttack');
 const WEAPON = require('../../attacks/weapons');
-const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
   strength: 14,
@@ -44,7 +43,6 @@ const CLERIC = {
   proficiency: {
     turnUndead: true,
   },
-  proficiencyModifier: proficiencyModifier,
 };
 
 module.exports = CLERIC;

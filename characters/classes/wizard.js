@@ -9,8 +9,6 @@ const WEAPON = require('../../attacks/weapons');
 const CANTRIP = require('../../spells/arcaneSpells');
 const { getAbilityScoreModifier } = require('../abilityScore');
 
-const proficiencyModifier = 2;
-
 const ABILITY_SCORE = {
   strength: 10,
   dexterity: 14,
@@ -35,8 +33,6 @@ const RAY_OF_FROST = spellCasting(
   CANTRIP.rayOfFrost,
   ABILITY_SCORE.inteligence
 );
-//console.log(spellCasting(CANTRIP.firebolt, ABILITY_SCORE.inteligence));
-//console.log(CANTRIP.firebolt);
 
 const ATTACKS = [STAFF, FIREBOLT, RAY_OF_FROST];
 
@@ -56,7 +52,6 @@ const WIZARD = {
   proficiency: {
     spellbook: true,
   },
-  proficiencyModifier: proficiencyModifier,
 };
 
 module.exports = WIZARD;
