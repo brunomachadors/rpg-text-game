@@ -1,5 +1,5 @@
 const { input } = require('@inquirer/prompts');
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
 
 let count = 3;

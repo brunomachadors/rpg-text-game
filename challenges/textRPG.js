@@ -1,6 +1,6 @@
 const { rawlist } = require('@inquirer/prompts');
 const { treasureDoor, dangerDoor, setDoor } = require('./doors');
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const {
   characterSheet,
   characterStatus,

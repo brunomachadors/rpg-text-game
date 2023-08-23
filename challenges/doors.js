@@ -1,8 +1,10 @@
 const { rawlist } = require('@inquirer/prompts');
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { combat } = require('./combat');
 const { riddle } = require('../challenges/riddles');
 const { gameOver } = require('../gameText/gameStatus');
+const { trapAttack, trapAttackDescription } = require('../attacks/trapAttack');
+const TRAPS = require('./traps');
 
 function setDoor(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -35,6 +37,11 @@ function treasureDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.openChest);
         console.log(GAME_TEXT.textSpacing);
+
+        trapAttackDescription(TRAPS.arrow);
+        console.log('Attack: ' + trapAttack(TRAPS.arrow).attack());
+        console.log('Damage:' + trapAttack(TRAPS.arrow).damage());
+
         gameOver();
         break;
       case 'investigateChest':

@@ -3,7 +3,7 @@ const {
   damageRange,
   attack,
   damage,
-} = require('../../attacks/attack');
+} = require('../../attacks/weaponAttack');
 const { spellCasting } = require('../../attacks/spellAttack');
 const WEAPON = require('../../attacks/weapons');
 const CANTRIP = require('../../spells/arcaneSpells');
@@ -56,6 +56,7 @@ const WIZARD = {
   proficiency: {
     spellbook: true,
   },
+  proficiencyModifier: proficiencyModifier,
 };
 
 module.exports = WIZARD;

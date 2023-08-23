@@ -1,5 +1,5 @@
 const { rawlist } = require('@inquirer/prompts');
-const GAME_TEXT = require('./gameTex');
+const GAME_TEXT = require('./gameText');
 
 function gameOver() {
   console.log(GAME_TEXT.textSpacing);

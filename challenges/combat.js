@@ -1,5 +1,5 @@
 const { rawlist } = require('@inquirer/prompts');
-const GAME_TEXT = require('../gameText/gameTex');
+const T = require('../gameText/gameText');
 const MONSTERS = require('../challenges/monsters');
 const {
   characterStatusStyled,

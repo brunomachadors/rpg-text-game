@@ -3,7 +3,7 @@ const {
   damageRange,
   attack,
   damage,
-} = require('../../attacks/attack');
+} = require('../../attacks/weaponAttack');
 const WEAPON = require('../../attacks/weapons');
 const { getAbilityScoreModifier } = require('../abilityScore');
 
@@ -44,6 +44,7 @@ const ROGUE = {
     sneakAttack: true,
     toolkit: true,
   },
+  proficiencyModifier: proficiencyModifier,
 };
 
 module.exports = ROGUE;

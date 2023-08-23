@@ -18,6 +18,7 @@
   "homepage": "https://github.com/brunomachador/rpg-text-game#readme",
   "dependencies": {
     "@inquirer/prompts": "^3.0.2",
+    "colors": "^1.4.0",
     "nodemon": "^3.0.1"
   }
 }

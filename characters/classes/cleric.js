@@ -3,7 +3,7 @@ const {
   damageRange,
   attack,
   damage,
-} = require('../../attacks/attack');
+} = require('../../attacks/weaponAttack');
 const WEAPON = require('../../attacks/weapons');
 const proficiencyModifier = 2;
 
@@ -44,6 +44,7 @@ const CLERIC = {
   proficiency: {
     turnUndead: true,
   },
+  proficiencyModifier: proficiencyModifier,
 };
 
 module.exports = CLERIC;

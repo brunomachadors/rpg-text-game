@@ -1,4 +1,4 @@
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { getAbilityScoreModifier } = require('./abilityScore');
 const CLASSES = require('./classes');
 

@@ -30,6 +30,14 @@ const GAME_TEXT = {
     attackDamage: 'ATTACK DAMAGE: ',
   },
 
+  trap: {
+    disable: {
+      success: 'You sucessfully disabled the trap',
+      failure: 'You failed to disable the trap',
+      roll: (roll, bonus) => `Disable trap roll: ${roll} + ${bonus}`,
+    },
+  },
+
   textSpacing: '================================================',
 
   doors: 'You entered a dungeon and you see two doors, select one door',
