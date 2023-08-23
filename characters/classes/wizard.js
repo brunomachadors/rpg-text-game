@@ -9,6 +9,8 @@ const WEAPON = require('../../attacks/weapons');
 const CANTRIP = require('../../spells/arcaneSpells');
 const { getAbilityScoreModifier } = require('../abilityScore');
 
+const proficiencyModifier = 2;
+
 const ABILITY_SCORE = {
   strength: 10,
   dexterity: 14,
