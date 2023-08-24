@@ -54,6 +54,7 @@ const WIZARD = {
   proficiency: {
     spellbook: true,
   },
+  proficiencyModifier,
 };
 
 module.exports = WIZARD;

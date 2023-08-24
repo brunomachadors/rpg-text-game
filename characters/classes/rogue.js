@@ -43,6 +43,7 @@ const ROGUE = {
     sneakAttack: true,
     toolkit: true,
   },
+  proficiencyModifier,
 };
 
 module.exports = ROGUE;

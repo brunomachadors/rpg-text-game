@@ -48,6 +48,7 @@ const FIGHTER = {
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
   armor: ARMOR,
+  proficiencyModifier,
 };
 
 module.exports = FIGHTER;

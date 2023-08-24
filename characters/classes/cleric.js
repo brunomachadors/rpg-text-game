@@ -44,6 +44,7 @@ const CLERIC = {
   proficiency: {
     turnUndead: true,
   },
+  proficiencyModifier,
 };
 
 module.exports = CLERIC;

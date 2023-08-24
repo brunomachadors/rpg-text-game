@@ -16,7 +16,7 @@ function characterSheet(classType) {
     proficiency: CLASSES[classType].proficiency
       ? CLASSES[classType].proficiency
       : null,
-    proficiencyModifier: 2,
+    proficiencyModifier: CLASSES[classType].proficiencyModifier,
   };
 
   return CHARACTER;
@@ -43,7 +43,7 @@ function characterStatusStyled() {
   displayInfo();
   displayAbilityScore();
   displayAttacks();
-  displayProficiencies();
+  displayProficiency();
 }
 
 function displayInfo() {
@@ -52,6 +52,7 @@ function displayInfo() {
   console.log(`HP: ${this.character.hp}`);
   console.log(`ARMOR CLASS: ${this.character.ac}`);
   console.log(GAME_TEXT.textSpacing);
+  console.log('Proficiency Modifier: ' + this.character.proficiencyModifier);
 }
 
 function displayAbilityScore() {
@@ -100,10 +101,10 @@ function displayAttacks() {
   });
 }
 
-function displayProficiencies() {
+function displayProficiency() {
   console.log(GAME_TEXT.character.proficiency);
-  if (this.character.proficiencies) {
-    console.log(Object.keys(this.character.proficiencies));
+  if (this.character.proficiency) {
+    console.log(Object.keys(this.character.proficiency));
   } else {
     console.log();
   }
