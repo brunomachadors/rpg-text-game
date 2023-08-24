@@ -7,6 +7,8 @@ function disableTrap(character, trap) {
     ? character.proficiencyModifier
     : 0;
 
+  console.log(proficiencyBonus);
+
   const bonus =
     getAbilityScoreModifier(character.abilityScore.dexterity) +
     proficiencyBonus;

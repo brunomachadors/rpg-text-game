@@ -13,9 +13,10 @@ function characterSheet(classType) {
     abilityScore: CLASSES[classType].abilityScore,
     attacks: CLASSES[classType].attacks ? CLASSES[classType].attacks : null,
     spells: CLASSES[classType].spells ? CLASSES[classType].spells : null,
-    proficiencies: CLASSES[classType].proficiency
+    proficiency: CLASSES[classType].proficiency
       ? CLASSES[classType].proficiency
       : null,
+    proficiencyModifier: 2,
   };
 
   return CHARACTER;
