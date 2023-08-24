@@ -66,7 +66,7 @@ function openChest() {
 
   setTimeout(() => {
     playAgain();
-  }, 5000);
+  }, TIMEOUTS.oneSecond);
 }
 
 module.exports = { removeChestTrap, openChest };
