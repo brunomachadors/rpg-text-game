@@ -4,6 +4,7 @@ const { trapAttackDescription, trapAttack } = require('../attacks/trapAttack');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
 const { characterStatusShort } = require('../characters/character');
 const TIMEOUTS = require('../timeouts');
+const GAME_TEXT = require('../gameText/gameText');
 
 function removeChestTrap(trap) {
   rawlist({
@@ -27,8 +28,13 @@ function removeChestTrap(trap) {
             const attack = trapAttack(trap).attack();
             console.log('Attack: ' + attack);
             if (attack >= this.character.ac) {
+              console.log(GAME_TEXT.trap.attack.hit);
               const damage = trapAttack(trap).damage();
               this.character.hp -= damage;
+
+              setTimeout(() => {
+                characterStatusShort();
+              }, TIMEOUTS.oneSecond);
 
               if (this.character.hp <= 0) {
                 setTimeout(() => {
@@ -36,10 +42,8 @@ function removeChestTrap(trap) {
                 }, TIMEOUTS.oneSecond);
               }
               console.log('Damage:' + damage);
-
-              setTimeout(() => {
-                characterStatusShort();
-              }, TIMEOUTS.oneSecond);
+            } else {
+              console.log(GAME_TEXT.trap.attack.missed);
             }
           }
 
@@ -58,7 +62,7 @@ function removeChestTrap(trap) {
 }
 
 function openChest() {
-  console.log('YOU FOUND THE TREASURE');
+  console.log(GAME_TEXT.treasure.found);
 
   setTimeout(() => {
     playAgain();

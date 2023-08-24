@@ -1,5 +1,3 @@
-const { TRAPS } = require('../challenges/traps');
-const GAME_TEXT = require('../gameText/gameText');
 const { roll, d20 } = require('../rolls/rolls');
 
 function trapAttack(trap) {

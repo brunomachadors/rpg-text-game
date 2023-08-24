@@ -1,3 +1,5 @@
+require('colors');
+
 const GAME_TEXT = {
   menu: {
     mainMenu: 'Welcome to the Text RPG',
@@ -36,6 +38,10 @@ const GAME_TEXT = {
       failure: 'You failed to disable the trap',
       roll: (roll, bonus) => `Disable trap roll: ${roll} + ${bonus}`,
     },
+    attack: {
+      hit: 'The trapped hited you'.red,
+      missed: 'The trap missed you'.green,
+    },
   },
 
   textSpacing: '================================================',
@@ -58,6 +64,10 @@ const GAME_TEXT = {
     riddleCount: (count) => `You have more ${count} chances.`,
     riddleTitle: '===================RIDDLE=======================',
     solved: '===================SOLVED=======================',
+  },
+
+  treasure: {
+    found: 'You found a treasure'.blue,
   },
 };
 

@@ -8,7 +8,7 @@ const TRAPS = {
         .blue,
     accuracy: 7,
     maxDamage: 10,
-    cd: 30,
+    cd: 8,
   },
 };
 
