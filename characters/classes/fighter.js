@@ -3,9 +3,8 @@ const {
   damageRange,
   attack,
   damage,
-} = require('../../attacks/attack');
+} = require('../../attacks/weaponAttack');
 const WEAPON = require('../../attacks/weapons');
-
 const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
@@ -49,6 +48,7 @@ const FIGHTER = {
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
   armor: ARMOR,
+  proficiencyModifier,
 };
 
 module.exports = FIGHTER;

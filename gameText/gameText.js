@@ -1,3 +1,5 @@
+require('colors');
+
 const GAME_TEXT = {
   menu: {
     mainMenu: 'Welcome to the Text RPG',
@@ -30,6 +32,18 @@ const GAME_TEXT = {
     attackDamage: 'ATTACK DAMAGE: ',
   },
 
+  trap: {
+    disable: {
+      success: 'You sucessfully disabled the trap',
+      failure: 'You failed to disable the trap',
+      roll: (roll, bonus) => `Disable trap roll: ${roll} + ${bonus}`,
+    },
+    attack: {
+      hit: 'The trapped hited you'.red,
+      missed: 'The trap missed you'.green,
+    },
+  },
+
   textSpacing: '================================================',
 
   doors: 'You entered a dungeon and you see two doors, select one door',
@@ -50,6 +64,10 @@ const GAME_TEXT = {
     riddleCount: (count) => `You have more ${count} chances.`,
     riddleTitle: '===================RIDDLE=======================',
     solved: '===================SOLVED=======================',
+  },
+
+  treasure: {
+    found: 'You found a treasure'.blue,
   },
 };
 

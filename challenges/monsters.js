@@ -1,4 +1,4 @@
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { d20, roll } = require('../rolls/rolls');
 
 const MONSTERS = {

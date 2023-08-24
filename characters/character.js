@@ -1,4 +1,4 @@
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { getAbilityScoreModifier } = require('./abilityScore');
 const CLASSES = require('./classes');
 
@@ -13,9 +13,10 @@ function characterSheet(classType) {
     abilityScore: CLASSES[classType].abilityScore,
     attacks: CLASSES[classType].attacks ? CLASSES[classType].attacks : null,
     spells: CLASSES[classType].spells ? CLASSES[classType].spells : null,
-    proficiencies: CLASSES[classType].proficiency
+    proficiency: CLASSES[classType].proficiency
       ? CLASSES[classType].proficiency
       : null,
+    proficiencyModifier: CLASSES[classType].proficiencyModifier,
   };
 
   return CHARACTER;
@@ -42,7 +43,7 @@ function characterStatusStyled() {
   displayInfo();
   displayAbilityScore();
   displayAttacks();
-  displayProficiencies();
+  displayProficiency();
 }
 
 function displayInfo() {
@@ -51,6 +52,7 @@ function displayInfo() {
   console.log(`HP: ${this.character.hp}`);
   console.log(`ARMOR CLASS: ${this.character.ac}`);
   console.log(GAME_TEXT.textSpacing);
+  console.log('Proficiency Modifier: ' + this.character.proficiencyModifier);
 }
 
 function displayAbilityScore() {
@@ -99,10 +101,10 @@ function displayAttacks() {
   });
 }
 
-function displayProficiencies() {
+function displayProficiency() {
   console.log(GAME_TEXT.character.proficiency);
-  if (this.character.proficiencies) {
-    console.log(Object.keys(this.character.proficiencies));
+  if (this.character.proficiency) {
+    console.log(Object.keys(this.character.proficiency));
   } else {
     console.log();
   }

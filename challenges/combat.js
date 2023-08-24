@@ -1,11 +1,12 @@
 const { rawlist } = require('@inquirer/prompts');
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const MONSTERS = require('../challenges/monsters');
 const {
   characterStatusStyled,
   characterStatusShort,
 } = require('../characters/character');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
+const TIMEOUTS = require('../timeouts');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -27,8 +28,13 @@ function combat(monster) {
     console.log('BOOM');
   }
 
-  characterStatusStyled();
-  playerAttack();
+  setTimeout(() => {
+    characterStatusStyled();
+  }, TIMEOUTS.oneSecond);
+
+  setTimeout(() => {
+    playerAttack();
+  }, TIMEOUTS.oneSecond);
 }
 
 function playerAttack() {
@@ -41,7 +47,10 @@ function playerAttack() {
     this.attackDamage = this.character.attacks[attack].damage();
     console.log(GAME_TEXT.combat.attack);
     console.log('ATTACK ROLL: ' + this.attackRoll);
-    attackHit(this.attackDamage);
+
+    setTimeout(() => {
+      attackHit(this.attackDamage);
+    }, TIMEOUTS.oneSecond);
     monsterStatus();
   });
 }
@@ -52,7 +61,9 @@ function monsterAttack() {
   console.log(
     'ATTACK:' + monsterAttack + ' VS ARMOR CLASS:' + this.character.ac
   );
-  monsterHit(monsterAttack);
+  setTimeout(() => {
+    monsterHit(monsterAttack);
+  }, TIMEOUTS.oneSecond);
 }
 
 function monsterHit(monsterAttack) {
@@ -61,17 +72,26 @@ function monsterHit(monsterAttack) {
     let monsterDamage = this.monster.attacks[0].monsterDamage();
     console.log('DAMAGE:' + monsterDamage);
     this.character.hp -= monsterDamage;
-    characterStatusShort();
+
+    setTimeout(() => {
+      characterStatusShort();
+    }, TIMEOUTS.oneSecond);
 
     if (this.character.hp <= 0) {
-      gameOver();
+      setTimeout(() => {
+        gameOver();
+      }, TIMEOUTS.oneSecond);
     } else {
-      playerAttack();
+      setTimeout(() => {
+        playerAttack();
+      }, TIMEOUTS.oneSecond);
     }
   } else {
     console.log(`MONSTER MISSSED`);
     console.log(GAME_TEXT.textSpacing);
-    playerAttack();
+    setTimeout(() => {
+      playerAttack();
+    }, TIMEOUTS.oneSecond);
   }
 }
 function attackHit(damage) {
@@ -89,11 +109,15 @@ function monsterStatus() {
   console.log(GAME_TEXT.combat.monster);
   if (this.monster.hp > 0) {
     console.log(`${this.monster.name} HP: ${this.monster.hp}`.toUpperCase());
-    monsterAttack();
+    setTimeout(() => {
+      monsterAttack();
+    }, TIMEOUTS.oneSecond);
   } else {
     console.log(`${this.monster.name} died`.toUpperCase());
     console.log(`DROPPED: ${this.monster.loot}`);
-    playAgain();
+    setTimeout(() => {
+      playAgain();
+    }, TIMEOUTS.oneSecond);
   }
 }
 

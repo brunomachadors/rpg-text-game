@@ -1,14 +1,19 @@
 const { rawlist } = require('@inquirer/prompts');
-const GAME_TEXT = require('../gameText/gameTex');
+const GAME_TEXT = require('../gameText/gameText');
 const { combat } = require('./combat');
 const { riddle } = require('../challenges/riddles');
 const { gameOver } = require('../gameText/gameStatus');
+const { trapAttack, trapAttackDescription } = require('../attacks/trapAttack');
+const TRAPS = require('./traps');
+const { characterStatusShort } = require('../characters/character');
+const { removeChestTrap } = require('./treasureChest');
 
-function setDoor(mainMenu, character, startGame) {
+function setDoor(mainMenu, character, startGame, removeChestTrap) {
   this.mainMenu = mainMenu;
   this.character = character;
   this.startGame = startGame;
   this.combat = combat;
+  this.removeChestTrap = removeChestTrap;
 }
 
 function treasureDoor(character) {
@@ -35,20 +40,34 @@ function treasureDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.openChest);
         console.log(GAME_TEXT.textSpacing);
-        gameOver();
+
+        trapAttackDescription(TRAPS.arrow);
+        const attack = trapAttack(TRAPS.arrow).attack();
+        console.log('Attack: ' + attack);
+        if (attack >= this.character.ac) {
+          const damage = trapAttack(TRAPS.arrow).damage();
+          this.character.hp -= damage;
+
+          if (this.character.hp <= 0) {
+            gameOver();
+          }
+          console.log('Damage:' + damage);
+          characterStatusShort();
+        }
+        this.startGame();
         break;
       case 'investigateChest':
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.investigateChest);
         console.log(GAME_TEXT.textSpacing);
-        this.mainMenu();
+        removeChestTrap(TRAPS.arrow);
 
         break;
       case 'leaveChest':
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
         console.log(GAME_TEXT.textSpacing);
-        this.mainMenu();
+        this.startGame();
         break;
       default:
         console.log('That is not a valid option');
@@ -58,6 +77,7 @@ function treasureDoor(character) {
 
 function dangerDoor(character) {
   this.character = character;
+  this.dangerDoor = dangerDoor;
 
   rawlist({
     message: 'Pick one:',
@@ -86,7 +106,7 @@ function dangerDoor(character) {
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.leave);
         console.log(GAME_TEXT.textSpacing);
-        this.mainMenu();
+        this.startGame();
         break;
       case 'talkToTheSkeleton':
         riddle();
