@@ -47,16 +47,16 @@ function characterStatusStyled() {
 }
 
 function displayInfo() {
-  console.log(`CLASS: ${this.character.class}`.toUpperCase());
-  console.log(`LEVEL: ${this.character.level}`);
-  console.log(`HP: ${this.character.hp}`);
-  console.log(`ARMOR CLASS: ${this.character.ac}`);
-  console.log(GAME_TEXT.textSpacing);
-  console.log('Proficiency Modifier: ' + this.character.proficiencyModifier);
+  console.log(`CLASS:${this.character.class}`.toUpperCase());
+  console.log(`LEVEL:${this.character.level}`);
+  console.log(`HP:${this.character.hp}`);
+  console.log(`ARMOR CLASS:${this.character.ac}`);
+  console.log('PROFICIENCY MOD:' + this.character.proficiencyModifier);
 }
 
 function displayAbilityScore() {
-  console.log(`ABILITY SCORE:`);
+  console.log(GAME_TEXT.character.abilityScore);
+
   console.log(
     `  STR: ${this.character.abilityScore.strength} (${getAbilityScoreModifier(
       this.character.abilityScore.strength
@@ -87,7 +87,6 @@ function displayAbilityScore() {
       this.character.abilityScore.charisma
     )})`
   );
-  console.log(GAME_TEXT.textSpacing);
 }
 
 function displayAttacks() {
@@ -97,7 +96,6 @@ function displayAttacks() {
     console.log('Atribute: ' + attack.atribute);
     console.log('Accuracy: ' + attack.accuracy);
     console.log('Damage: ' + attack.damageRange);
-    console.log(GAME_TEXT.textSpacing);
   });
 }
 

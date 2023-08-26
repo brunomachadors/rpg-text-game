@@ -14,13 +14,14 @@ function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
   this.character = character;
   this.startGame = startGame;
-  this.round = 0;
+  this.round;
 }
 
-function combat(monsterName) {
+function combat(monsterName, round = 0) {
   this.attacks = [];
   this.attackRoll;
   this.attackDamage;
+  this.round = round;
 
   let monster = MONSTERS[monsterName];
 
@@ -55,8 +56,8 @@ function playerAttack(monster) {
     console.log(this.character.attacks[attack].description);
     this.attackRoll = this.character.attacks[attack].attack();
     const damage = this.character.attacks[attack].damage();
-    console.log(GAME_TEXT.combat.attack);
-    console.log('ATTACK ROLL: ' + this.attackRoll);
+    console.log(GAME_TEXT.combat.attackBar);
+    console.log(GAME_TEXT.combat.attack(this.attackRoll));
 
     setTimeout(() => {
       monster = attackHit(monster, damage + sneakDamage);
@@ -71,12 +72,15 @@ function monsterAttack(monster) {
   console.log(
     'ATTACK:' + monsterAttack + ' VS ARMOR CLASS:' + this.character.ac
   );
+
+  console.log(GAME_TEXT.monster.attack(monsterAttack, this.character.ac));
   setTimeout(() => {
     monsterHit(monster, monsterAttack);
   }, TIMEOUTS.oneSecond);
 }
 
 function monsterHit(monster, monsterAttack) {
+  this.round += 1;
   if (monsterAttack >= this.character.ac) {
     console.log(GAME_TEXT.monster.hit);
     let monsterDamage = monster.attacks[0].monsterDamage();
@@ -107,7 +111,7 @@ function monsterHit(monster, monsterAttack) {
 function attackHit(monster, damage) {
   if (this.attackRoll >= monster.ac) {
     console.log(GAME_TEXT.combat.hit);
-    console.log(GAME_TEXT.combat.attackDamage + damage);
+    console.log(GAME_TEXT.combat.attackDamage(damage));
     monster.hp -= damage;
   } else {
     console.log(`YOU'VE MISSED`);
@@ -116,7 +120,6 @@ function attackHit(monster, damage) {
 }
 
 function monsterStatus(monster) {
-  this.round += 1;
   console.log(GAME_TEXT.combat.monster);
   if (monster.hp > 0) {
     console.log(`${monster.name} HP: ${monster.hp}`.toUpperCase());
