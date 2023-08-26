@@ -15,9 +15,30 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 - [x] Ridde system
 - [x] Spells
 - [x] Disable trap
-- [ ] Sneak attack
+- [x] Sneak attack
 - [ ] Turn Undead
+
+## Tech
+
+Dillinger uses a number of open source projects to work properly:
+
+- [node.js](https://nodejs.org/en)- Node.js® is an open-source, cross-platform JavaScript runtime environment.
+- [Nodemon](https://www.npmjs.com/package/nodemon) - Nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+- [Inquirer](https://github.com/SBoudrias/Inquirer.js) - To create the console.log flow
+- [Colors](https://github.com/Marak/colors.js) - To colorize the text console
 
 ## How to run
 
-`npm run start`
+```sh
+cd RPG-TEX-GAME
+npm i
+npm run start
+```
+
+## FEATURES
+
+### Sneak Attack
+
+I created the stealth and sneak attack mechanic.
+When encountering an enemy, a stealth check is performed and if successful, the rogue can perform a sneak attack on the first attack.
+Stealth validation is done for all characters, but only the rogue can do sneak attacks.

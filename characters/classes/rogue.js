@@ -42,6 +42,7 @@ const ROGUE = {
   proficiency: {
     sneakAttack: true,
     toolkit: true,
+    stealth: true,
   },
   proficiencyModifier,
 };

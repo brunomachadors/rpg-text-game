@@ -1,6 +1,8 @@
 const { input } = require('@inquirer/prompts');
 const GAME_TEXT = require('../gameText/gameText');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
+const { combat } = require('./combat');
+const MONSTERS = require('./monsters');
 
 let count = 3;
 
@@ -28,7 +30,7 @@ function riddle() {
         riddle();
       } else {
         console.log(GAME_TEXT.riddle.riddleCountZero);
-        gameOver();
+        combat(MONSTERS.skeleton.name, 1);
       }
     }
   });

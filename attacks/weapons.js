@@ -5,7 +5,7 @@ const WEAPON = {
       'A longsword, also written long sword, is a one-handed melee slashing weapon.\n It has a straight blade, and is typically around 3½ feet in length.',
     atribute: 'strength',
     maxDamage: 8,
-    description: 'Longsword attacks with strength and deals 1d8 damange',
+    description: 'Longsword attacks with strength and deals 1d8 damage',
   },
   bow: {
     name: 'Longbow',

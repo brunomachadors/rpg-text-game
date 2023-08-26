@@ -1,3 +1,4 @@
+const GAME_TEXT = require('../gameText/gameText');
 const { roll, d20 } = require('../rolls/rolls');
 
 function trapAttack(trap) {
@@ -8,7 +9,7 @@ function trapAttack(trap) {
 }
 
 function trapAttackDescription(trap) {
-  console.log('Dungon Master: ' + trap.description);
+  console.log(GAME_TEXT.dungeonMaster.describe(trap.description));
 }
 
 module.exports = { trapAttack, trapAttackDescription };

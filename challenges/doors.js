@@ -5,8 +5,12 @@ const { riddle } = require('../challenges/riddles');
 const { gameOver } = require('../gameText/gameStatus');
 const { trapAttack, trapAttackDescription } = require('../attacks/trapAttack');
 const TRAPS = require('./traps');
-const { characterStatusShort } = require('../characters/character');
+const {
+  characterStatusShort,
+  characterStatus,
+} = require('../characters/character');
 const { removeChestTrap } = require('./treasureChest');
+const TIMEOUTS = require('../helpers/timeouts');
 
 function setDoor(mainMenu, character, startGame, removeChestTrap) {
   this.mainMenu = mainMenu;
@@ -38,23 +42,31 @@ function treasureDoor(character) {
     switch (option) {
       case 'openChest':
         console.log(GAME_TEXT.textSpacing);
-        console.log(GAME_TEXT.openChest);
-        console.log(GAME_TEXT.textSpacing);
 
         trapAttackDescription(TRAPS.arrow);
         const attack = trapAttack(TRAPS.arrow).attack();
-        console.log('Attack: ' + attack);
+        console.log(GAME_TEXT.trap.attack.attack(attack));
         if (attack >= this.character.ac) {
           const damage = trapAttack(TRAPS.arrow).damage();
           this.character.hp -= damage;
+          console.log(GAME_TEXT.trap.attack.hit);
+          console.log(GAME_TEXT.trap.attack.damage(damage));
 
-          if (this.character.hp <= 0) {
-            gameOver();
-          }
-          console.log('Damage:' + damage);
           characterStatusShort();
+
+          setTimeout(() => {
+            if (this.character.hp <= 0) {
+              gameOver();
+            } else {
+              removeChestTrap(TRAPS.arrow);
+            }
+          }, TIMEOUTS.oneSecond);
+        } else {
+          setTimeout(() => {
+            console.log(GAME_TEXT.trap.attack.missed);
+            removeChestTrap(TRAPS.arrow);
+          }, TIMEOUTS.oneSecond);
         }
-        this.startGame();
         break;
       case 'investigateChest':
         console.log(GAME_TEXT.textSpacing);
@@ -98,9 +110,7 @@ function dangerDoor(character) {
   }).then(function (option) {
     switch (option) {
       case 'atackSkeleton':
-        console.log(GAME_TEXT.textSpacing);
-        console.log(GAME_TEXT.attack);
-        this.combat('skeleton');
+        combat('skeleton');
         break;
       case 'runFromSkeleton':
         console.log(GAME_TEXT.textSpacing);
