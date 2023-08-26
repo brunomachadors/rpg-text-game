@@ -6,7 +6,7 @@ const {
   characterStatusShort,
 } = require('../characters/character');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
-const TIMEOUTS = require('../timeouts');
+const TIMEOUTS = require('../helpers/timeouts');
 const { sneakAttack } = require('../attacks/sneakAttack');
 const { stealth } = require('../characters/skills/stealth');
 

@@ -10,7 +10,7 @@ const {
   characterStatus,
 } = require('../characters/character');
 const { removeChestTrap } = require('./treasureChest');
-const TIMEOUTS = require('../timeouts');
+const TIMEOUTS = require('../helpers/timeouts');
 
 function setDoor(mainMenu, character, startGame, removeChestTrap) {
   this.mainMenu = mainMenu;

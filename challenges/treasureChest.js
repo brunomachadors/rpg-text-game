@@ -3,7 +3,7 @@ const { disableTrap } = require('../characters/skills/disabelTrap');
 const { trapAttackDescription, trapAttack } = require('../attacks/trapAttack');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
 const { characterStatusShort } = require('../characters/character');
-const TIMEOUTS = require('../timeouts');
+const TIMEOUTS = require('../helpers/timeouts');
 const GAME_TEXT = require('../gameText/gameText');
 
 function removeChestTrap(trap) {
