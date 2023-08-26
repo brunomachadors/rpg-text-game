@@ -100,7 +100,7 @@ function dangerDoor(character) {
       case 'atackSkeleton':
         console.log(GAME_TEXT.textSpacing);
         console.log(GAME_TEXT.attack);
-        this.combat('skeleton');
+        combat('skeleton');
         break;
       case 'runFromSkeleton':
         console.log(GAME_TEXT.textSpacing);

@@ -3,7 +3,6 @@ const { treasureDoor, dangerDoor, setDoor } = require('./doors');
 const GAME_TEXT = require('../gameText/gameText');
 const {
   characterSheet,
-  characterStatus,
   characterStatusStyled,
 } = require('../characters/character');
 const { setCombat } = require('./combat');
@@ -31,7 +30,6 @@ function selectCharacter() {
   }).then(function (classType) {
     this.character = characterSheet(classType);
     console.clear();
-    //characterStatus();
     characterStatusStyled();
     startGame();
   });

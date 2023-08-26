@@ -1,11 +1,6 @@
 require('colors');
 
 const GAME_TEXT = {
-  menu: {
-    mainMenu: 'Welcome to the Text RPG',
-    selectCharacter: 'Before we start select your class:',
-  },
-
   classes: {
     fighter: `Fighter: Combat expert`,
     rogue: `Rogue: Disable traps and stealth`,
@@ -28,8 +23,18 @@ const GAME_TEXT = {
     monster: '--------------------MONSTER--------------------',
     monsterAttack: '================MONSTER=ATTACK==================',
     monsterDamage: '================MONSTER=DAMAGE==================',
-    hit: `YOU'VE HITTED`,
+    hit: `YOU'VE HITTED`.green,
     attackDamage: 'ATTACK DAMAGE: ',
+  },
+
+  menu: {
+    mainMenu: 'Welcome to the Text RPG',
+    selectCharacter: 'Before we start select your class:',
+  },
+
+  monster: {
+    hit: `YOU'RE HITTED`.red,
+    damage: (monsterDamage) => `DAMAGE: ${monsterDamage}`.red,
   },
 
   trap: {
@@ -65,6 +70,15 @@ const GAME_TEXT = {
     riddleTitle: '===================RIDDLE=======================',
     solved: '===================SOLVED=======================',
   },
+
+  stealth: {
+    check: (roll, bonus) => `Stealth check: ${roll} bonus: ${bonus}`,
+    success: `You approached unnoticed.`.green,
+    failure: `Your presence was noticed.`.red,
+  },
+
+  sneackAttack: `You hited a sneak attack`,
+  nextAttack: 'Next Attack will be a Sneak Attack: 2d6',
 
   treasure: {
     found: 'You found a treasure'.blue,

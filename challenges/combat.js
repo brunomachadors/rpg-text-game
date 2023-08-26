@@ -7,70 +7,80 @@ const {
 } = require('../characters/character');
 const { gameOver, playAgain } = require('../gameText/gameStatus');
 const TIMEOUTS = require('../timeouts');
+const { sneakAttack } = require('../attacks/sneakAttack');
+const { stealth } = require('../characters/skills/stealth');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
   this.character = character;
   this.startGame = startGame;
+  this.round = 0;
 }
 
-function combat(monster) {
+function combat(monsterName) {
   this.attacks = [];
   this.attackRoll;
   this.attackDamage;
-  this.monster = MONSTERS[monster];
+
+  let monster = MONSTERS[monsterName];
 
   this.character.attacks.forEach(function callback(attack, index) {
     attacks.push({ name: attack.name, value: index });
   });
-
-  if (this.character.spells) {
-    console.log('BOOM');
-  }
 
   setTimeout(() => {
     characterStatusStyled();
   }, TIMEOUTS.oneSecond);
 
   setTimeout(() => {
-    playerAttack();
+    playerAttack(monster);
   }, TIMEOUTS.oneSecond);
 }
 
-function playerAttack() {
+function playerAttack(monster) {
+  let sneakDamage = 0;
+  console.log(`Round: ${this.round + 1}`);
+  if (this.round === 0) {
+    const stealthCheck = stealth(this.character, 12);
+    if (stealthCheck && this.character.class === 'rogue') {
+      sneakDamage = sneakAttack(this.character);
+      console.log(GAME_TEXT.nextAttack);
+    }
+  }
+
   rawlist({
     message: 'SELECT ATTACK',
     choices: attacks,
   }).then(function (attack) {
     console.log(this.character.attacks[attack].description);
     this.attackRoll = this.character.attacks[attack].attack();
-    this.attackDamage = this.character.attacks[attack].damage();
+    const damage = this.character.attacks[attack].damage();
     console.log(GAME_TEXT.combat.attack);
     console.log('ATTACK ROLL: ' + this.attackRoll);
 
     setTimeout(() => {
-      attackHit(this.attackDamage);
+      monster = attackHit(monster, damage + sneakDamage);
+      monsterStatus(monster);
     }, TIMEOUTS.oneSecond);
-    monsterStatus();
   });
 }
 
-function monsterAttack() {
+function monsterAttack(monster) {
   console.log(GAME_TEXT.combat.monsterAttack);
-  let monsterAttack = this.monster.attacks[0].monsterAttack();
+  let monsterAttack = monster.attacks[0].monsterAttack();
   console.log(
     'ATTACK:' + monsterAttack + ' VS ARMOR CLASS:' + this.character.ac
   );
   setTimeout(() => {
-    monsterHit(monsterAttack);
+    monsterHit(monster, monsterAttack);
   }, TIMEOUTS.oneSecond);
 }
 
-function monsterHit(monsterAttack) {
+function monsterHit(monster, monsterAttack) {
   if (monsterAttack >= this.character.ac) {
-    console.log(`YOU'RE HITTED`);
-    let monsterDamage = this.monster.attacks[0].monsterDamage();
-    console.log('DAMAGE:' + monsterDamage);
+    console.log(GAME_TEXT.monster.hit);
+    let monsterDamage = monster.attacks[0].monsterDamage();
+    console.log(GAME_TEXT.monster.damage(monsterDamage));
     this.character.hp -= monsterDamage;
 
     setTimeout(() => {
@@ -83,38 +93,39 @@ function monsterHit(monsterAttack) {
       }, TIMEOUTS.oneSecond);
     } else {
       setTimeout(() => {
-        playerAttack();
+        playerAttack(monster);
       }, TIMEOUTS.oneSecond);
     }
   } else {
     console.log(`MONSTER MISSSED`);
     console.log(GAME_TEXT.textSpacing);
     setTimeout(() => {
-      playerAttack();
+      playerAttack(monster);
     }, TIMEOUTS.oneSecond);
   }
 }
-function attackHit(damage) {
-  if (this.attackRoll >= this.monster.ac) {
-    this.attackDamage = damage;
+function attackHit(monster, damage) {
+  if (this.attackRoll >= monster.ac) {
     console.log(GAME_TEXT.combat.hit);
-    console.log(GAME_TEXT.combat.attackDamage + this.attackDamage);
-    this.monster.hp = this.monster.hp - this.attackDamage;
+    console.log(GAME_TEXT.combat.attackDamage + damage);
+    monster.hp -= damage;
   } else {
     console.log(`YOU'VE MISSED`);
   }
+  return monster;
 }
 
-function monsterStatus() {
+function monsterStatus(monster) {
+  this.round += 1;
   console.log(GAME_TEXT.combat.monster);
-  if (this.monster.hp > 0) {
-    console.log(`${this.monster.name} HP: ${this.monster.hp}`.toUpperCase());
+  if (monster.hp > 0) {
+    console.log(`${monster.name} HP: ${monster.hp}`.toUpperCase());
     setTimeout(() => {
-      monsterAttack();
+      monsterAttack(monster);
     }, TIMEOUTS.oneSecond);
   } else {
-    console.log(`${this.monster.name} died`.toUpperCase());
-    console.log(`DROPPED: ${this.monster.loot}`);
+    console.log(`${monster.name} died`.toUpperCase());
+    console.log(`DROPPED: ${monster.loot}`);
     setTimeout(() => {
       playAgain();
     }, TIMEOUTS.oneSecond);
