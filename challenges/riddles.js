@@ -31,7 +31,6 @@ function riddle() {
       } else {
         console.log(GAME_TEXT.riddle.riddleCountZero);
         combat(MONSTERS.skeleton.name, 1);
-        //gameOver();
       }
     }
   });

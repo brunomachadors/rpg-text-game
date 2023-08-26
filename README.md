@@ -15,9 +15,17 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 - [x] Ridde system
 - [x] Spells
 - [x] Disable trap
-- [ ] Sneak attack
+- [x] Sneak attack
 - [ ] Turn Undead
+
+### SNEAK ATTACK
+
+I created the stealth and sneak attack mechanic.
+When encountering an enemy, a stealth check is performed and if successful, the rogue can perform a sneak attack on the first attack.
+Stealth validation is done for all characters, but does not generate the possibility of sneak attack.
 
 ## How to run
 
+`cd ../RPG-TEX-GAME`
+`npm install`
 `npm run start`
