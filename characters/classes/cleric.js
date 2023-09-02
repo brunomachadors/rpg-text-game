@@ -1,3 +1,4 @@
+const { turnUndeadAttack } = require('../../attacks/turnUndead');
 const {
   accuracy,
   damageRange,
@@ -6,6 +7,7 @@ const {
 } = require('../../attacks/weaponAttack');
 const WEAPON = require('../../attacks/weapons');
 const proficiencyModifier = 2;
+const spellcastingAbility = 'wisdom';
 
 const ABILITY_SCORE = {
   strength: 14,
@@ -26,9 +28,11 @@ const MACE = {
   damage: damage(WEAPON['mace'], ABILITY_SCORE),
 };
 
-const ATTACKS = [MACE];
+const TURN_UNDEAD = turnUndeadAttack();
 
-const SPELLS = {};
+const ATTACKS = [MACE, TURN_UNDEAD];
+
+const SPELLS = [];
 
 const ARMOR = {
   type: 'Chainmail',
@@ -45,6 +49,7 @@ const CLERIC = {
     turnUndead: true,
   },
   proficiencyModifier,
+  spellcastingAbility: spellcastingAbility,
 };
 
 module.exports = CLERIC;

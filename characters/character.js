@@ -1,22 +1,36 @@
 const GAME_TEXT = require('../gameText/gameText');
 const { getAbilityScoreModifier } = require('./abilityScore');
 const CLASSES = require('./classes');
+const { spellsaveDC } = require('./spellsaveDC');
 
 function characterSheet(classType) {
+  const baseClass = CLASSES[classType];
+
   let CHARACTER = {
     class: classType,
     level: 1,
     hp:
-      CLASSES[classType].baseHp +
-      getAbilityScoreModifier(CLASSES[classType].abilityScore.constitution),
-    ac: CLASSES[classType].armor.ac,
-    abilityScore: CLASSES[classType].abilityScore,
-    attacks: CLASSES[classType].attacks ? CLASSES[classType].attacks : null,
-    spells: CLASSES[classType].spells ? CLASSES[classType].spells : null,
-    proficiency: CLASSES[classType].proficiency
-      ? CLASSES[classType].proficiency
+      baseClass.baseHp +
+      getAbilityScoreModifier(baseClass.abilityScore.constitution),
+    ac: baseClass.armor.ac,
+    abilityScore: baseClass.abilityScore,
+    attacks: baseClass.attacks ? baseClass.attacks : null,
+    spells: baseClass.spells
+      ? {
+          names: baseClass.spells,
+          ability: baseClass.spellcastingAbility,
+          bonus:
+            getAbilityScoreModifier(
+              baseClass.abilityScore[baseClass.spellcastingAbility]
+            ) + baseClass.proficiencyModifier,
+          dc: spellsaveDC(
+            baseClass.abilityScore[baseClass.spellcastingAbility],
+            baseClass.proficiencyModifier
+          ),
+        }
       : null,
-    proficiencyModifier: CLASSES[classType].proficiencyModifier,
+    proficiency: baseClass.proficiency ? baseClass.proficiency : null,
+    proficiencyModifier: baseClass.proficiencyModifier,
   };
 
   return CHARACTER;
@@ -43,6 +57,7 @@ function characterStatusStyled() {
   displayInfo();
   displayAbilityScore();
   displayAttacks();
+  displaySpells();
   displayProficiency();
 }
 
@@ -92,11 +107,30 @@ function displayAbilityScore() {
 function displayAttacks() {
   console.log(GAME_TEXT.character.attacks);
   this.character.attacks.forEach((attack) => {
+    console.log('');
     console.log('Attack: ' + attack.name);
     console.log('Atribute: ' + attack.atribute);
-    console.log('Accuracy: ' + attack.accuracy);
-    console.log('Damage: ' + attack.damageRange);
+
+    if (attack.accuracy) {
+      console.log('Accuracy: ' + attack.accuracy);
+    }
+
+    if (attack.damageRange) {
+      console.log('Damage: ' + attack.damageRange);
+    }
+
+    if (attack.description) {
+      console.log('Description: ' + attack.description);
+    }
+    console.log('');
   });
+}
+
+function displaySpells() {
+  if (this.character.spells) {
+    console.log(GAME_TEXT.character.spells);
+    console.log(this.character.spells);
+  }
 }
 
 function displayProficiency() {
