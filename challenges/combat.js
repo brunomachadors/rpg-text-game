@@ -39,13 +39,15 @@ function combat(monsterName, round = 0) {
 }
 
 function playerAttack(monster) {
-  let sneakDamage = 0;
   console.log(`Round: ${this.round + 1}`);
+  let sneakDamage = 0;
   if (this.round === 0) {
-    const stealthCheck = stealth(this.character, 12);
-    if (stealthCheck && this.character.class === 'rogue') {
-      sneakDamage = sneakAttack(this.character);
-      console.log(GAME_TEXT.nextAttack);
+    if (this.character.class === 'rogue') {
+      const stealthCheck = stealth(this.character, 12);
+      if (stealthCheck && this.character.class === 'rogue') {
+        sneakDamage = sneakAttack(this.character);
+        console.log(GAME_TEXT.nextAttack);
+      }
     }
   }
 
@@ -54,25 +56,39 @@ function playerAttack(monster) {
     choices: attacks,
   }).then(function (attack) {
     console.log(this.character.attacks[attack].description);
-    this.attackRoll = this.character.attacks[attack].attack();
-    const damage = this.character.attacks[attack].damage();
-    console.log(GAME_TEXT.combat.attackBar);
-    console.log(GAME_TEXT.combat.attack(this.attackRoll));
 
-    setTimeout(() => {
-      monster = attackHit(monster, damage + sneakDamage);
-      monsterStatus(monster);
-    }, TIMEOUTS.oneSecond);
+    switch (this.character.attacks[attack].name) {
+      case 'Turn Undead':
+        const dc = this.character.spells.dc;
+        if (this.character.attacks[attack].attack(dc, monster)) {
+          console.log('Skeleton run away');
+          setTimeout(() => {
+            playAgain();
+          }, TIMEOUTS.oneSecond);
+        } else {
+          console.log('Skeleton resisted');
+          setTimeout(() => {
+            monsterStatus(monster);
+          }, TIMEOUTS.oneSecond);
+        }
+        break;
+      default:
+        this.attackRoll = this.character.attacks[attack].attack();
+        const damage = this.character.attacks[attack].damage();
+        console.log(GAME_TEXT.combat.attackBar);
+        console.log(GAME_TEXT.combat.attack(this.attackRoll));
+
+        setTimeout(() => {
+          monster = attackHit(monster, damage + sneakDamage);
+          monsterStatus(monster);
+        }, TIMEOUTS.oneSecond);
+    }
   });
 }
 
 function monsterAttack(monster) {
   console.log(GAME_TEXT.combat.monsterAttack);
   let monsterAttack = monster.attacks[0].monsterAttack();
-  console.log(
-    'ATTACK:' + monsterAttack + ' VS ARMOR CLASS:' + this.character.ac
-  );
-
   console.log(GAME_TEXT.monster.attack(monsterAttack, this.character.ac));
   setTimeout(() => {
     monsterHit(monster, monsterAttack);
