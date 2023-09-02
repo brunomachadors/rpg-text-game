@@ -12,7 +12,7 @@ function characterSheet(classType) {
     hp:
       baseClass.baseHp +
       getAbilityScoreModifier(baseClass.abilityScore.constitution),
-    ac: baseClass.armor.ac,
+    ac: baseClass.armor,
     abilityScore: baseClass.abilityScore,
     attacks: baseClass.attacks ? baseClass.attacks : null,
     spells: baseClass.spells
