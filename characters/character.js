@@ -122,6 +122,14 @@ function displayAttacks() {
     if (attack.description) {
       console.log('Description: ' + attack.description);
     }
+
+    attack.savingThrow?.atribute
+      ? console.log('Save: ' + attack.savingThrow.atribute)
+      : null;
+    attack.savingThrow?.dc
+      ? console.log('DC : ' + attack.savingThrow.dc)
+      : null;
+
     console.log('');
   });
 }

@@ -9,6 +9,7 @@ const { gameOver, playAgain } = require('../gameText/gameStatus');
 const TIMEOUTS = require('../helpers/timeouts');
 const { sneakAttack } = require('../attacks/sneakAttack');
 const { stealth } = require('../characters/skills/stealth');
+const { checkSpellResist } = require('../attacks/spellAttack');
 
 function setCombat(mainMenu, character, startGame) {
   this.mainMenu = mainMenu;
@@ -73,15 +74,28 @@ function playerAttack(monster) {
         }
         break;
       default:
-        this.attackRoll = this.character.attacks[attack].attack();
         const damage = this.character.attacks[attack].damage();
-        console.log(GAME_TEXT.combat.attackBar);
-        console.log(GAME_TEXT.combat.attack(this.attackRoll));
 
-        setTimeout(() => {
-          monster = attackHit(monster, damage + sneakDamage);
-          monsterStatus(monster);
-        }, TIMEOUTS.oneSecond);
+        if (this.character.attacks[attack].savingThrow?.atribute) {
+          if (checkSpellResist(this.character.attacks[attack], monster)) {
+            console.log(GAME_TEXT.monster.resist.fail);
+            console.log(GAME_TEXT.combat.attackDamage(damage));
+            monster.hp -= damage;
+          } else {
+            console.log(GAME_TEXT.monster.resist.success);
+          }
+          setTimeout(() => {
+            monsterStatus(monster);
+          }, TIMEOUTS.oneSecond);
+        } else {
+          this.attackRoll = this.character.attacks[attack].attack();
+          console.log(GAME_TEXT.combat.attackBar);
+          console.log(GAME_TEXT.combat.attack(this.attackRoll));
+          setTimeout(() => {
+            monster = attackHit(monster, damage + sneakDamage);
+            monsterStatus(monster);
+          }, TIMEOUTS.oneSecond);
+        }
     }
   });
 }

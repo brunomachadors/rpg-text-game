@@ -17,6 +17,7 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 - [x] Disable trap
 - [x] Sneak attack
 - [x] Turn Undead
+- [x] Cleric spell
 
 ## Tech
 
@@ -47,3 +48,7 @@ Stealth validation is done for all characters, but only the rogue can do sneak a
 
 When you find an enemy that it's an undead type and you are a cleric, it's possible to use turn undead.
 The turn undead it's a test agains the cleric spell dc, if the undead fails it runs away
+
+### Spells CD
+
+Now a spell could be resisted

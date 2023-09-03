@@ -5,10 +5,7 @@ const { riddle } = require('../challenges/riddles');
 const { gameOver } = require('../gameText/gameStatus');
 const { trapAttack, trapAttackDescription } = require('../attacks/trapAttack');
 const TRAPS = require('./traps');
-const {
-  characterStatusShort,
-  characterStatus,
-} = require('../characters/character');
+const { characterStatusShort } = require('../characters/character');
 const { removeChestTrap } = require('./treasureChest');
 const TIMEOUTS = require('../helpers/timeouts');
 

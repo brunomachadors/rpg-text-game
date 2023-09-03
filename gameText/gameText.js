@@ -41,6 +41,10 @@ const GAME_TEXT = {
     attack: (attack, ac) => `ATTACK:${attack} VS ARMOR CLASS:${ac}`.cyan,
     damage: (monsterDamage) => `DAMAGE:${monsterDamage}`.red,
     hit: `YOU'RE HITTED`.red,
+    resist: {
+      success: 'Monster resisted',
+      fail: 'Monster failed to resist',
+    },
   },
 
   trap: {
