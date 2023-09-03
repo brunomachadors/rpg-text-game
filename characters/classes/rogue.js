@@ -1,11 +1,6 @@
-const {
-  accuracy,
-  damageRange,
-  attack,
-  damage,
-} = require('../../attacks/weaponAttack');
-const WEAPON = require('../../attacks/weapons');
-const { getAbilityScoreModifier } = require('../abilityScore');
+const { getWeaponAttack } = require('../../attacks/weaponAttack');
+const { getArmorClass } = require('../../item/armor');
+
 const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
@@ -17,22 +12,9 @@ const ABILITY_SCORE = {
   charisma: 14,
 };
 
-const DAGGER = {
-  name: WEAPON['dagger'].name,
-  atribute: WEAPON['dagger'].atribute,
-  description: WEAPON['dagger'].description,
-  accuracy: accuracy(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
-  damageRange: damageRange(WEAPON['dagger'], ABILITY_SCORE),
-  attack: attack(WEAPON['dagger'], ABILITY_SCORE, proficiencyModifier),
-  damage: damage(WEAPON['dagger'], ABILITY_SCORE),
-};
-
+const DAGGER = getWeaponAttack('dagger', ABILITY_SCORE, proficiencyModifier);
+const ARMOR = getArmorClass('studdedLeather', ABILITY_SCORE.dexterity);
 const ATTACKS = [DAGGER];
-
-const ARMOR = {
-  type: 'Leather',
-  ac: 12 + getAbilityScoreModifier(ABILITY_SCORE.dexterity),
-};
 
 const ROGUE = {
   baseHp: 8,

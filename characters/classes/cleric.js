@@ -1,11 +1,7 @@
 const { turnUndeadAttack } = require('../../attacks/turnUndead');
-const {
-  accuracy,
-  damageRange,
-  attack,
-  damage,
-} = require('../../attacks/weaponAttack');
-const WEAPON = require('../../attacks/weapons');
+const { getWeaponAttack } = require('../../attacks/weaponAttack');
+const { getArmorClass } = require('../../item/armor');
+
 const proficiencyModifier = 2;
 const spellcastingAbility = 'wisdom';
 
@@ -18,32 +14,18 @@ const ABILITY_SCORE = {
   charisma: 12,
 };
 
-const MACE = {
-  name: WEAPON['mace'].name,
-  atribute: WEAPON['mace'].atribute,
-  description: WEAPON['mace'].description,
-  accuracy: accuracy(WEAPON['mace'], ABILITY_SCORE, proficiencyModifier),
-  damageRange: damageRange(WEAPON['mace'], ABILITY_SCORE),
-  attack: attack(WEAPON['mace'], ABILITY_SCORE, proficiencyModifier),
-  damage: damage(WEAPON['mace'], ABILITY_SCORE),
-};
-
+const MACE = getWeaponAttack('mace', ABILITY_SCORE, proficiencyModifier);
+const ARMOR = getArmorClass('chainMail', ABILITY_SCORE.dexterity);
+const SHIELD = getArmorClass('shield');
 const TURN_UNDEAD = turnUndeadAttack();
-
 const ATTACKS = [MACE, TURN_UNDEAD];
-
 const SPELLS = [];
-
-const ARMOR = {
-  type: 'Chainmail',
-  ac: 16,
-};
 
 const CLERIC = {
   baseHp: 8,
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
-  armor: ARMOR,
+  armor: ARMOR + SHIELD,
   spells: SPELLS,
   proficiency: {
     turnUndead: true,

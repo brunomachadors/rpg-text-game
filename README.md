@@ -16,7 +16,7 @@ _This project has the objective of create a text game RPG based Dungeons and Dra
 - [x] Spells
 - [x] Disable trap
 - [x] Sneak attack
-- [ ] Turn Undead
+- [x] Turn Undead
 
 ## Tech
 
@@ -42,3 +42,8 @@ npm run start
 I created the stealth and sneak attack mechanic.
 When encountering an enemy, a stealth check is performed and if successful, the rogue can perform a sneak attack on the first attack.
 Stealth validation is done for all characters, but only the rogue can do sneak attacks.
+
+### Turn Undead
+
+When you find an enemy that it's an undead type and you are a cleric, it's possible to use turn undead.
+The turn undead it's a test agains the cleric spell dc, if the undead fails it runs away

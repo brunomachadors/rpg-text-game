@@ -1,47 +1,25 @@
-const {
-  accuracy,
-  damageRange,
-  attack,
-  damage,
-} = require('../../attacks/weaponAttack');
-const WEAPON = require('../../attacks/weapons');
+const { getWeaponAttack } = require('../../attacks/weaponAttack');
+const { getArmorClass } = require('../../item/armor');
+
 const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
   strength: 16,
-  dexterity: 12,
+  dexterity: 14,
   constitution: 14,
   inteligence: 10,
-  wisdom: 12,
+  wisdom: 10,
   charisma: 10,
 };
 
-const SWORD = {
-  name: WEAPON['sword'].name,
-  atribute: WEAPON['sword'].atribute,
-  description: WEAPON['sword'].description,
-  accuracy: accuracy(WEAPON['sword'], ABILITY_SCORE, proficiencyModifier),
-  damageRange: damageRange(WEAPON['sword'], ABILITY_SCORE),
-  attack: attack(WEAPON['sword'], ABILITY_SCORE, proficiencyModifier),
-  damage: damage(WEAPON['sword'], ABILITY_SCORE),
-};
-
-const BOW = {
-  name: WEAPON['bow'].name,
-  atribute: WEAPON['bow'].atribute,
-  description: WEAPON['bow'].description,
-  accuracy: accuracy(WEAPON['bow'], ABILITY_SCORE, proficiencyModifier),
-  damageRange: damageRange(WEAPON['bow'], ABILITY_SCORE),
-  attack: attack(WEAPON['bow'], ABILITY_SCORE, proficiencyModifier),
-  damage: damage(WEAPON['bow'], ABILITY_SCORE),
-};
-
-const ATTACKS = [SWORD, BOW];
-
-const ARMOR = {
-  type: 'full plate',
-  ac: 18,
-};
+const LONGSWORD = getWeaponAttack(
+  'longsword',
+  ABILITY_SCORE,
+  proficiencyModifier
+);
+const BOW = getWeaponAttack('bow', ABILITY_SCORE, proficiencyModifier);
+const ATTACKS = [LONGSWORD, BOW];
+const ARMOR = getArmorClass('breastplate', ABILITY_SCORE.dexterity);
 
 const FIGHTER = {
   baseHp: 10,
