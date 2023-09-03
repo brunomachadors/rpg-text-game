@@ -15,16 +15,17 @@ const ABILITY_SCORE = {
 };
 
 const MACE = getWeaponAttack('mace', ABILITY_SCORE, proficiencyModifier);
+const ARMOR = getArmorClass('chainMail', ABILITY_SCORE.dexterity);
+const SHIELD = getArmorClass('shield');
 const TURN_UNDEAD = turnUndeadAttack();
 const ATTACKS = [MACE, TURN_UNDEAD];
 const SPELLS = [];
-const ARMOR = getArmorClass('chainMail', ABILITY_SCORE.dexterity);
 
 const CLERIC = {
   baseHp: 8,
   abilityScore: ABILITY_SCORE,
   attacks: ATTACKS,
-  armor: ARMOR,
+  armor: ARMOR + SHIELD,
   spells: SPELLS,
   proficiency: {
     turnUndead: true,

@@ -13,8 +13,8 @@ const ABILITY_SCORE = {
 };
 
 const DAGGER = getWeaponAttack('dagger', ABILITY_SCORE, proficiencyModifier);
-const ATTACKS = [DAGGER];
 const ARMOR = getArmorClass('studdedLeather', ABILITY_SCORE.dexterity);
+const ATTACKS = [DAGGER];
 
 const ROGUE = {
   baseHp: 8,

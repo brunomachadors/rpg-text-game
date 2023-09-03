@@ -1,5 +1,5 @@
 const WEAPON = {
-  sword: {
+  longsword: {
     name: 'Longsword',
     description:
       'A longsword, also written long sword, is a one-handed melee slashing weapon.\n It has a straight blade, and is typically around 3½ feet in length.',

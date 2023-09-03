@@ -5,17 +5,21 @@ const proficiencyModifier = 2;
 
 const ABILITY_SCORE = {
   strength: 16,
-  dexterity: 12,
+  dexterity: 14,
   constitution: 14,
   inteligence: 10,
-  wisdom: 12,
+  wisdom: 10,
   charisma: 10,
 };
 
-const SWORD = getWeaponAttack('sword', ABILITY_SCORE, proficiencyModifier);
+const LONGSWORD = getWeaponAttack(
+  'longsword',
+  ABILITY_SCORE,
+  proficiencyModifier
+);
 const BOW = getWeaponAttack('bow', ABILITY_SCORE, proficiencyModifier);
-const ATTACKS = [SWORD, BOW];
-const ARMOR = getArmorClass('plate', ABILITY_SCORE);
+const ATTACKS = [LONGSWORD, BOW];
+const ARMOR = getArmorClass('breastplate', ABILITY_SCORE.dexterity);
 
 const FIGHTER = {
   baseHp: 10,
